@@ -712,9 +712,88 @@
 
 <div class="divider">§ 05</div>
 
-<!-- SECTION 5: 我会怎么改 -->
+<!-- SECTION 5: Pi Agent Loop -->
 <div class="section">
   <div class="section-num">05</div>
+  <div class="section-label">The Simplest Possible Loop</div>
+  <h2>如何使用大模型——龙虾竟然采用这么简单的机制</h2>
+
+  <p>读到这里你可能有个问题没被解答：Pi Agent 是怎么决定「还需要继续调用 LLM」还是「当前结果就够了，可以结束了」的？</p>
+
+  <p>我翻完代码之后，答案让我愣了一下——<em>简单到令人难以置信。</em></p>
+
+  <h3>终止判断：只有一行逻辑</h3>
+
+  <div class="code-block">
+    <div class="code-block-label">pi-agent-core 核心循环（简化版）</div>
+<span class="kw">while</span> (<span class="num">true</span>) {
+  <span class="cmt">// 1. 调用 LLM，拿到流式响应</span>
+  <span class="key">response</span> = <span class="kw">await</span> streamCompletion(model, { ...context, tools });
+
+  <span class="cmt">// 2. ← 唯一的退出判断，就这一行</span>
+  <span class="kw">if</span> (!response.toolCalls?.length) <span class="kw">break</span>;
+
+  <span class="cmt">// 3. 有工具调用 → 执行所有工具</span>
+  <span class="key">results</span> = <span class="kw">await</span> executeTools(response.toolCalls);
+
+  <span class="cmt">// 4. 把工具结果塞回上下文，下一轮继续</span>
+  context.messages.push(assistantMsg, toolResults);
+}
+  </div>
+
+  <div class="callout">
+    <strong>核心机制一句话：</strong>LLM 返回的结果里有 <code>tool_calls</code> 就继续循环，没有就停。<em>Pi Agent 自己没有任何「觉得够了」的判断逻辑。终止的决定权 100% 在 LLM 手里。</em>
+  </div>
+
+  <h3>LLM 怎么知道「该停了」？</h3>
+
+  <p>现代 LLM（Claude、GPT-4 等）在每次回复时，可以同时输出两样东西：</p>
+
+  <div class="insight-card" data-icon="💬">
+    <h4>文本内容（content）</h4>
+    <p>给用户看的最终回答。只要有这个，没有工具调用，循环就终止。</p>
+  </div>
+
+  <div class="insight-card" data-icon="🔧">
+    <h4>工具调用列表（tool_calls）</h4>
+    <p>LLM 声明「我需要调用某某工具，参数是……」。只要出现这个，循环就继续执行工具、把结果喂回给 LLM。</p>
+  </div>
+
+  <p>这个「要不要调工具」的决策，是 LLM 在推理时<em>自然产生</em>的——不是 Pi Agent 的代码在控制，而是 LLM 自己判断「当前上下文够不够回答问题」。信息够了，它就输出纯文本；还需要查什么，它就请求调工具。</p>
+
+  <h3>那有没有死循环的风险？</h3>
+
+  <p>作者 Mario Zechner 的设计哲学是：<strong>没有 maxSteps 这类控制旋钮，「循环就一直跑，直到 agent 说它完成了」。</strong>他从来没遇到需要这个限制的场景，所以就没加。</p>
+
+  <p>但实践中不会真的死循环，原因有三重保护：</p>
+
+  <ol class="step-list">
+    <li><strong>上下文窗口自然封顶</strong>：每轮 tool result 都撑大 context，用完 token 就报错终止</li>
+    <li><strong>LLM 自身收敛性</strong>：积累了足够多的工具结果后，LLM 自然倾向于给出最终回答，而不是继续调工具</li>
+    <li><strong>OpenClaw 外层 abort 机制</strong>：用户发来新消息时，Steering Queue 可以中断当前工具执行，跳过剩余 tool calls，强制进入下一轮</li>
+  </ol>
+
+  <div class="callout callout-blue">
+    <strong>真正的退出条件其实是三合一：</strong>LLM 不再调工具 <em>+</em> 没有排队的 Follow-up 消息 <em>+</em> 没有 Steering 中断——三者同时满足，才算真正结束一次交互。这是 OpenClaw 在 Pi Agent 基础上加的额外层次。
+  </div>
+
+  <h3>这个设计为什么「对」？</h3>
+
+  <p>你可能觉得这太简单了——这确实就是几乎所有主流 agent 框架（LangGraph、LlamaIndex、AutoGen）的通用模式。Pi 只是把它做到了极致精简，没有计划模式、没有 todo list、没有 step 上限。</p>
+
+  <div class="quote">
+    「不需要的东西，就不会被造出来。」<br>
+    <span style="font-size:14px; color: var(--text-dim); font-style:normal;">——Mario Zechner 在设计 pi-agent-core 时的哲学</span>
+  </div>
+
+  <p>这种极简主义有一个深刻的含义：<em>agent 的「智能」完全来自 LLM 本身，框架只负责把工具结果正确地传递给它。</em> 复杂度不在循环里，而在你给 LLM 的工具和上下文的质量。这也是为什么 OpenClaw 花了那么多心思在 SOUL.md、Skills、Memory 上——那些才是真正影响 agent 行为质量的地方。</p>
+</div>
+
+<div class="divider">§ 06</div>
+
+<!-- SECTION 6: 我会怎么改 -->
+<div class="section">
+  <div class="section-num">06</div>
   <div class="section-label">If I Could Improve It</div>
   <h2>如果让我来改，我会加什么</h2>
 
@@ -773,7 +852,7 @@
 
 <!-- CONCLUSION -->
 <div class="section">
-  <h2>结尾：代码里藏着一种态度</h2>
+  <h2>结语：代码里藏着一种态度</h2>
 
   <p>读完 OpenClaw 的代码，让我印象最深的不是某个具体的技术决策，而是一种贯穿始终的工程态度：<em>「为一个人服务好，比为一百万人服务差更重要。」</em></p>
 
