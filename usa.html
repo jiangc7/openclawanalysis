@@ -3,995 +3,1296 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🇺🇸 美国亲子游攻略 · 25天 · 2026年7月</title>
+<title>🇺🇸 美国亲子游攻略 · 25天 · 2026年7月 V4</title>
 <style>
-:root {
-  --la: #e8603c; --sd: #00897b; --sf: #1565c0; --parks: #2e7d32;
-  --dc: #283593; --road: #6a1b9a; --nyc: #37474f; --bos: #b71c1c;
-  --gold: #f9a825; --tip: #fff8e1; --warn: #fff3e0; --book: #fce4ec;
-  --radius: 12px; --shadow: 0 2px 12px rgba(0,0,0,0.1);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: "PingFang SC","Microsoft YaHei",system-ui,sans-serif; background: #f5f5f5; color: #212121; line-height: 1.7; }
+  :root {
+    --navy: #1a2744;
+    --gold: #c9952a;
+    --gold-light: #f0c96a;
+    --sky: #4a90c4;
+    --sky-light: #e8f4fc;
+    --cream: #fdf8f0;
+    --text: #2c3e50;
+    --text-light: #6b7a8d;
+    --border: #dde4ee;
+    --red: #c0392b;
+    --green: #27ae60;
+    --purple: #8e44ad;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2d4a8a 60%, #1a3a6e 100%);
+    color: white;
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★';
+    position: absolute; top: 16px; left: 0; right: 0;
+    font-size: 11px; letter-spacing: 6px; color: rgba(255,255,255,0.15);
+  }
+  .hero-flag { font-size: 56px; margin-bottom: 12px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 36px); font-weight: 800; letter-spacing: 1px; }
+  .hero-sub { margin-top: 8px; font-size: 15px; color: var(--gold-light); letter-spacing: 2px; }
+  .hero-stats { display: flex; justify-content: center; gap: 28px; margin-top: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 32px; font-weight: 900; color: var(--gold-light); line-height: 1; }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; }
 
-/* HEADER */
-.hero { background: linear-gradient(135deg,#1a237e 0%,#0d47a1 40%,#1565c0 100%); color: #fff; padding: 48px 24px 36px; text-align: center; }
-.hero h1 { font-size: 2rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; }
-.hero .sub { font-size: 1.05rem; opacity: .85; margin-bottom: 20px; }
-.hero .stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
-.hero .stat { text-align: center; }
-.hero .stat .num { font-size: 1.8rem; font-weight: 700; color: var(--gold); }
-.hero .stat .label { font-size: .78rem; opacity: .8; }
+  .nav-bar {
+    background: var(--navy);
+    position: sticky; top: 0; z-index: 100;
+    overflow-x: auto; white-space: nowrap;
+    padding: 0 16px;
+    scrollbar-width: none;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-bar::-webkit-scrollbar { display: none; }
+  .nav-bar a {
+    display: inline-block; color: rgba(255,255,255,0.75);
+    text-decoration: none; padding: 13px 13px;
+    font-size: 13px; font-weight: 600; transition: color 0.2s;
+  }
+  .nav-bar a:hover { color: var(--gold-light); }
 
-/* NAV */
-nav { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.12); position: sticky; top: 0; z-index: 100; overflow-x: auto; white-space: nowrap; }
-nav a { display: inline-block; padding: 12px 16px; font-size: .82rem; font-weight: 600; text-decoration: none; color: #555; border-bottom: 3px solid transparent; transition: all .2s; }
-nav a:hover { color: #1565c0; border-bottom-color: #1565c0; }
+  .change-banner {
+    background: linear-gradient(90deg, #1a3a2a, #235c3a);
+    color: white; padding: 18px 24px;
+    text-align: center; font-size: 13px; line-height: 2.1;
+  }
+  .change-banner strong { color: #7ef0a0; }
 
-/* ROUTE OVERVIEW */
-.route-bar { background: #fff; margin: 20px 24px; border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow); }
-.route-bar h2 { font-size: 1.1rem; color: #1a237e; margin-bottom: 14px; }
-.route-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: .85rem; }
-.route-step { background: #e8eaf6; color: #1a237e; padding: 4px 12px; border-radius: 20px; font-weight: 600; }
-.route-arrow { color: #aaa; font-size: 1rem; }
+  .route-strip {
+    background: var(--navy); color: white;
+    padding: 18px 24px; font-size: 13px;
+    line-height: 2.2; text-align: center;
+  }
+  .route-strip strong { color: var(--gold-light); }
 
-/* URGENT BOOKING */
-.urgent { margin: 0 24px 20px; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
-.urgent-header { background: #c62828; color: #fff; padding: 14px 20px; font-weight: 700; font-size: 1rem; }
-.urgent-body { padding: 16px 20px; }
-.book-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
-.book-item:last-child { border-bottom: none; }
-.book-badge { font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; margin-top: 2px; }
-.badge-red { background: #ffcdd2; color: #c62828; }
-.badge-orange { background: #ffe0b2; color: #e65100; }
-.badge-green { background: #c8e6c9; color: #1b5e20; }
-.book-info { flex: 1; }
-.book-info strong { display: block; font-size: .9rem; }
-.book-info a { color: #1565c0; font-size: .8rem; word-break: break-all; }
+  .section { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
 
-/* MAIN LAYOUT */
-.container { max-width: 960px; margin: 0 auto; padding: 0 24px 48px; }
+  .section-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 28px; padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-icon {
+    width: 52px; height: 52px; background: var(--navy);
+    border-radius: 14px; display: flex; align-items: center;
+    justify-content: center; font-size: 24px; flex-shrink: 0;
+  }
+  .section-title h2 { font-size: 22px; font-weight: 800; color: var(--navy); }
+  .section-title p { font-size: 13px; color: var(--text-light); margin-top: 2px; }
 
-/* SECTION HEADERS */
-.section-title { display: flex; align-items: center; gap: 10px; margin: 32px 0 16px; }
-.section-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-.section-title h2 { font-size: 1.25rem; font-weight: 700; }
+  .day-card {
+    background: white; border-radius: 16px;
+    border: 1px solid var(--border); margin-bottom: 20px;
+    overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .day-header {
+    background: linear-gradient(90deg, var(--navy) 0%, #2d4a8a 100%);
+    color: white; padding: 14px 20px;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  }
+  .day-badge {
+    background: var(--gold); color: var(--navy);
+    font-weight: 900; font-size: 11px;
+    padding: 4px 10px; border-radius: 20px; white-space: nowrap;
+  }
+  .day-title { font-size: 15px; font-weight: 700; flex: 1; }
+  .day-date { font-size: 12px; color: var(--gold-light); white-space: nowrap; }
+  .day-body { padding: 18px 20px; }
 
-/* DAY CARDS */
-.day-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 16px; overflow: hidden; }
-.day-header { display: flex; align-items: center; gap: 12px; padding: 14px 20px; color: #fff; }
-.day-num { font-size: 1.3rem; font-weight: 800; min-width: 60px; }
-.day-date { font-size: .78rem; opacity: .85; }
-.day-title { font-size: 1rem; font-weight: 700; flex: 1; }
-.day-badges { display: flex; gap: 6px; flex-wrap: wrap; }
-.badge { font-size: .68rem; padding: 2px 8px; border-radius: 10px; font-weight: 700; }
-.badge-white { background: rgba(255,255,255,.25); color: #fff; }
-.day-body { padding: 16px 20px; }
+  .timeline { list-style: none; position: relative; }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 38px; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .tl-item { display: flex; gap: 16px; margin-bottom: 18px; position: relative; }
+  .tl-time {
+    width: 52px; font-size: 12px; font-weight: 700;
+    color: var(--sky); text-align: right; padding-top: 3px; flex-shrink: 0;
+  }
+  .tl-dot {
+    width: 14px; height: 14px; background: var(--sky);
+    border-radius: 50%; border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--sky);
+    flex-shrink: 0; margin-top: 4px; position: relative; z-index: 1;
+  }
+  .tl-dot.star { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+  .tl-dot.go { background: var(--red); box-shadow: 0 0 0 2px var(--red); }
+  .tl-content { flex: 1; }
+  .tl-content strong { font-size: 14px; color: var(--navy); display: block; margin-bottom: 3px; }
+  .tl-content p { font-size: 13px; color: var(--text-light); }
+  .tl-content a { color: var(--sky); font-size: 12px; text-decoration: none; }
+  .tl-content a:hover { text-decoration: underline; }
 
-/* TIMELINE ITEMS */
-.timeline { list-style: none; }
-.tl-item { display: flex; gap: 12px; padding: 8px 0; border-left: 2px solid #e0e0e0; margin-left: 28px; padding-left: 16px; position: relative; }
-.tl-item::before { content: ""; position: absolute; left: -5px; top: 14px; width: 8px; height: 8px; border-radius: 50%; background: #90a4ae; }
-.tl-time { font-size: .78rem; color: #78909c; font-weight: 700; min-width: 42px; flex-shrink: 0; padding-top: 2px; }
-.tl-content { flex: 1; font-size: .88rem; }
-.tl-content strong { display: block; font-size: .92rem; color: #212121; }
+  .hl { background: var(--sky-light); border-left: 4px solid var(--sky); border-radius: 0 10px 10px 0; padding: 12px 16px; margin: 10px 0; font-size: 13px; }
+  .hl.gold { background: #fff9e6; border-color: var(--gold); }
+  .hl.red { background: #fdf0ee; border-color: var(--red); }
+  .hl.green { background: #edfaf3; border-color: var(--green); }
+  .hl.purple { background: #f5edfb; border-color: var(--purple); }
 
-/* TIP BOXES */
-.tip { background: var(--tip); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 8px 0; font-size: .84rem; }
-.tip-warn { background: var(--warn); border-left-color: #ff6f00; }
-.tip-book { background: var(--book); border-left-color: #c62828; }
-.link { color: #1565c0; font-size: .8rem; text-decoration: none; }
-.link::before { content: "🔗 "; }
-.link:hover { text-decoration: underline; }
+  .tag { display: inline-block; padding: 2px 9px; border-radius: 12px; font-size: 11px; font-weight: 700; margin: 1px; }
+  .tag-new { background: #edfaf3; color: var(--green); border: 1px solid var(--green); }
+  .tag-warn { background: #fdf0ee; color: var(--red); border: 1px solid var(--red); }
+  .tag-ok { background: #edfaf3; color: #155724; border: 1px solid var(--green); }
+  .tag-ch { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
 
-/* FOOD TAGS */
-.food-tag { display: inline-block; background: #f3e5f5; color: #6a1b9a; border-radius: 6px; padding: 2px 8px; font-size: .75rem; margin: 2px; }
+  .tennis-box {
+    background: linear-gradient(135deg, #f5edfb, #ede0fa);
+    border: 2px solid var(--purple); border-radius: 14px;
+    padding: 18px 22px; margin-bottom: 20px;
+  }
+  .tennis-box h3 { color: var(--purple); font-size: 15px; margin-bottom: 10px; }
+  .tennis-box table { width: 100%; font-size: 13px; border-collapse: collapse; }
+  .tennis-box td { padding: 5px 8px; border-bottom: 1px solid rgba(142,68,173,0.15); }
+  .tennis-box td:first-child { font-weight: 700; color: var(--purple); width: 35%; }
 
-/* MUSIC SECTION */
-.music-card { background: linear-gradient(135deg,#311b92,#4527a0); color: #fff; border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; }
-.music-card h3 { font-size: 1rem; margin-bottom: 8px; }
-.music-card p { font-size: .86rem; opacity: .9; line-height: 1.7; }
-.music-card a { color: #ffd54f; }
+  .overview-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(170px,1fr)); gap: 10px; margin-top: 16px;
+  }
+  .ovc {
+    background: white; border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 14px; font-size: 12px;
+  }
+  .ovc .dr { font-weight: 900; color: var(--navy); font-size: 13px; }
+  .ovc .dl { color: var(--text-light); margin-top: 2px; }
+  .ovc .di { font-size: 18px; margin-bottom: 4px; }
+  .ovc.hl-purple { border-color: var(--purple); background: #faf5ff; }
+  .ovc.hl-purple .dr { color: var(--purple); }
 
-/* FOOD SECTION */
-.food-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
-.food-table th { background: #eceff1; padding: 8px 12px; text-align: left; font-weight: 700; }
-.food-table td { padding: 8px 12px; border-bottom: 1px solid #f0f0f0; }
-.food-table tr:hover td { background: #fafafa; }
+  .book-grid { display: grid; gap: 10px; }
+  .book-item {
+    background: white; border: 1px solid var(--border);
+    border-radius: 12px; padding: 13px 17px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .urg { width: 10px; height: 10px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+  .ur { background: #e74c3c; }
+  .uo { background: #f39c12; }
+  .ug { background: #27ae60; }
+  .book-item h4 { font-size: 14px; color: var(--navy); margin-bottom: 2px; }
+  .book-item p { font-size: 12px; color: var(--text-light); }
+  .book-item a { font-size: 12px; color: var(--sky); }
 
-/* TIPS GRID */
-.tips-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; }
-.tip-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 20px; }
-.tip-card h3 { font-size: .95rem; color: #1a237e; margin-bottom: 10px; }
-.tip-card ul { list-style: none; font-size: .84rem; }
-.tip-card ul li { padding: 4px 0; border-bottom: 1px solid #f5f5f5; }
-.tip-card ul li::before { content: "· "; color: #90a4ae; }
+  .food-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .food-table th { background: var(--navy); color: white; padding: 10px 12px; text-align: left; }
+  .food-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .food-table tr:last-child td { border-bottom: none; }
+  .food-table tr:nth-child(even) td { background: #f8fafe; }
+  .price { font-weight: 700; color: var(--green); }
 
-/* COLORS */
-.la { background: var(--la); }
-.sd { background: var(--sd); }
-.sf { background: var(--sf); }
-.parks { background: var(--parks); }
-.dc { background: var(--dc); }
-.road { background: var(--road); }
-.nyc { background: var(--nyc); }
-.bos { background: var(--bos); }
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 14px; }
+  .tip { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .tip h4 { font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+  .tip ul { list-style: none; }
+  .tip li { font-size: 13px; color: var(--text-light); padding: 3px 0 3px 14px; position: relative; }
+  .tip li::before { content: '·'; position: absolute; left: 0; color: var(--sky); font-weight: 900; }
 
-.dot-la { background: var(--la); }
-.dot-sd { background: var(--sd); }
-.dot-sf { background: var(--sf); }
-.dot-parks { background: var(--parks); }
-.dot-dc { background: var(--dc); }
-.dot-road { background: var(--road); }
-.dot-nyc { background: var(--nyc); }
-.dot-bos { background: var(--bos); }
+  hr.div { max-width: 900px; margin: 0 auto; border: none; border-top: 1px solid var(--border); }
 
-@media(max-width:600px){
-  .hero h1{font-size:1.4rem}
-  .hero .stats{gap:16px}
-  .container{padding:0 12px 40px}
-  .urgent,.route-bar{margin:12px}
-}
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 24px; font-size: 12px; margin-top: 48px;
+  }
+  footer span { color: var(--gold-light); }
+
+  @media (max-width: 600px) {
+    .hero-stats { gap: 14px; }
+    .stat-num { font-size: 24px; }
+    .timeline::before { left: 34px; }
+    .tl-time { width: 44px; font-size: 11px; }
+    .overview-grid { grid-template-columns: repeat(2,1fr); }
+  }
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <div class="hero">
-  <h1>🇺🇸 美国亲子游全程攻略</h1>
-  <div class="sub">2026年7月1日 — 7月25日 · 洛杉矶→旧金山→华盛顿DC→纽约→波士顿</div>
-  <div class="stats">
-    <div class="stat"><div class="num">25</div><div class="label">天</div></div>
-    <div class="stat"><div class="num">7</div><div class="label">大城市</div></div>
-    <div class="stat"><div class="num">2</div><div class="label">国家公园露营</div></div>
-    <div class="stat"><div class="num">10+</div><div class="label">顶尖大学</div></div>
-    <div class="stat"><div class="num">🥁</div><div class="label">打击乐专项</div></div>
+  <div class="hero-flag">🇺🇸</div>
+  <h1>美国亲子游全程攻略</h1>
+  <div class="hero-sub">2026年7月1日（周三）— 7月25日（周六）· V4版</div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">25</div><div class="stat-label">天</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">城市地区</div></div>
+    <div class="stat"><div class="stat-num">⚓</div><div class="stat-label">小鹰号航母</div></div>
+    <div class="stat"><div class="stat-num">🐋</div><div class="stat-label">海洋馆</div></div>
+    <div class="stat"><div class="stat-num">🛣️</div><div class="stat-label">1号公路PCH</div></div>
+    <div class="stat"><div class="stat-num">🎾</div><div class="stat-label">伯克利网球赛</div></div>
   </div>
 </div>
 
 <!-- NAV -->
-<nav>
-  <a href="#route">路线</a>
-  <a href="#booking">预订清单</a>
-  <a href="#la">洛杉矶</a>
-  <a href="#sd">圣地亚哥</a>
-  <a href="#sf">旧金山</a>
-  <a href="#parks">国家公园</a>
-  <a href="#dc">华盛顿DC</a>
-  <a href="#nyc">纽约</a>
-  <a href="#boston">波士顿</a>
-  <a href="#music">🥁 音乐</a>
-  <a href="#food">美食</a>
-  <a href="#tips">实用贴士</a>
+<nav class="nav-bar">
+  <a href="#changes">📋 本版修订</a>
+  <a href="#overview">🗓️ 总览</a>
+  <a href="#booking">📋 预订</a>
+  <a href="#la">🌴 洛杉矶</a>
+  <a href="#sd">⚓ 圣地亚哥</a>
+  <a href="#pch">🛣️ 1号公路</a>
+  <a href="#sf">🌁 旧金山湾区</a>
+  <a href="#tennis">🎾 网球锦标赛</a>
+  <a href="#muir">🌲 Muir Woods</a>
+  <a href="#day14">✈️ Day14飞DC</a>
+  <a href="#dc">🏛️ 华盛顿DC</a>
+  <a href="#nyc">🗽 纽约</a>
+  <a href="#boston">🚂 波士顿</a>
+  <a href="#food">🍽️ 美食</a>
+  <a href="#tips">🧳 贴士</a>
 </nav>
 
-<!-- ROUTE OVERVIEW -->
-<div class="route-bar" id="route">
-  <h2>🗺️ 总路线 &amp; 交通方式</h2>
-  <div class="route-steps">
-    <span class="route-step">✈️ 飞抵LAX</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#fce4ec;color:#c62828">🚗 LAX取车</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#fbe9e7;color:#bf360c">🌴 洛杉矶 Day1-3</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#e0f2f1;color:#004d40">🌊 圣地亚哥 Day4-5</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#e8eaf6;color:#1a237e">🏀 NBA Day6</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#e3f2fd;color:#0d47a1">🌉 旧金山 Day7-9</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#e8f5e9;color:#1b5e20">🌲 红杉 Day10-11</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#e8f5e9;color:#1b5e20">⛺ 优胜美地 Day12-13</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#fce4ec;color:#c62828">🚗 SFO还车✓</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#ede7f6;color:#311b92">✈️ 飞DC</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#e8eaf6;color:#283593">🏛️ DC Day15-18</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#f3e5f5;color:#4a148c">🚗 DC取车</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#f3e5f5;color:#4a148c">🛍️ 马大+费城 Day19-20</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#f3e5f5;color:#4a148c">🎓 普林斯顿→NJ还车</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#eceff1;color:#263238">🗽 纽约 Day21-23</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#ffebee;color:#b71c1c">🚂 Amtrak→波士顿 Day24</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#ffebee;color:#b71c1c">🚂 Amtrak→Newark EWR</span><span class="route-arrow">→</span>
-    <span class="route-step" style="background:#e8eaf6;color:#1a237e">✈️ 回国 7/25晚</span>
+<!-- CHANGE BANNER -->
+<div class="change-banner" id="changes">
+  <strong>V4 主要修订：</strong><br>
+  ① Day3加入 <strong>Griffith Observatory天文馆＋Getty Center盖蒂博物馆</strong>，下午再南下圣地亚哥 ·
+  ② 圣地亚哥拆为<strong>两整天</strong>：Day4上午小鹰号航母＋下午<strong>SeaWorld海洋馆</strong>，Day5 La Jolla海湾＋国庆烟火夜出发 ·
+  ③ <strong>机票7月14日晚飞DC</strong>，西岸精确14天 ·
+  ④ 网球赛已确认：<strong>Berkeley BG 18-12U Level 6 Junior Open · 7/11-12 · San Pablo Park</strong>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-icon">🗓️</div>
+    <div class="section-title">
+      <h2>25天行程总览</h2>
+    </div>
   </div>
-  <div class="tip" style="margin-top:16px">
-    <strong>🚗 租车说明（已修正）：</strong>LAX取车，自驾全程西岸约14天，<strong>7月14日在SFO机场还车</strong>，飞往华盛顿DC。DC地铁出行无需驾车。7月19日在DC/马里兰附近<strong>二次取车</strong>，自驾费城奥莱→普林斯顿，<strong>7月20日新泽西还车</strong>，此后纽约+波士顿全程公共交通。
+  <div class="route-strip">
+    ✈️ LAX → 🌴 <strong>洛杉矶 Day1-3</strong>（海滩·迪士尼·Griffith·Getty）→ ⚓🐋 <strong>圣地亚哥 Day4-5</strong>（小鹰号·SeaWorld·国庆烟火）→ 🛣️ <strong>1号公路 Day6-7</strong>（Big Sur·蒙特雷水族馆）→ 🏠 <strong>二姑家Brentwood Day8起</strong> → 🎓 <strong>湾区 Day8-11</strong>（斯坦福·Google·SF市区·科学院）→ 🎾 <strong>伯克利网球赛 Day12-13</strong> → 🌲 <strong>Muir Woods Day14上午</strong> → ✈️ <strong>Day14晚SFO飞DC</strong> → 🏛️ <strong>华盛顿DC Day15-18</strong> → 🚗 <strong>马大·费城·普林斯顿 Day19-20</strong> → 🗽 <strong>纽约 Day21-23</strong> → 🚂 <strong>波士顿一日游 Day24</strong> → ✈️ <strong>EWR回国 Day25</strong>
+  </div>
+
+  <div class="overview-grid">
+    <div class="ovc"><div class="di">🌴</div><div class="dr">Day 1–2 · 7/1-2</div><div class="dl">洛杉矶<br>圣莫妮卡 · 迪士尼</div></div>
+    <div class="ovc"><div class="di">🔭</div><div class="dr">Day 3 · 7/3</div><div class="dl">好莱坞→Griffith→Getty<br>→夜抵圣地亚哥</div></div>
+    <div class="ovc"><div class="di">⚓🐋</div><div class="dr">Day 4 · 7/4</div><div class="dl">小鹰号航母<br>SeaWorld海洋馆</div></div>
+    <div class="ovc"><div class="di">🎆</div><div class="dr">Day 5 · 7/5</div><div class="dl">La Jolla · 国庆烟火<br>夜出发圣塔芭芭拉</div></div>
+    <div class="ovc"><div class="di">🛣️</div><div class="dr">Day 6 · 7/6</div><div class="dl">Big Sur · Bixby Bridge<br>→夜宿蒙特雷</div></div>
+    <div class="ovc"><div class="di">🦦</div><div class="dr">Day 7 · 7/7</div><div class="dl">蒙特雷水族馆<br>17英里·圣克鲁斯→Brentwood</div></div>
+    <div class="ovc"><div class="di">🏠</div><div class="dr">Day 8 · 7/8</div><div class="dl">二姑家休息<br>Brentwood鲜果采摘</div></div>
+    <div class="ovc"><div class="di">🎓</div><div class="dr">Day 9 · 7/9</div><div class="dl">斯坦福·Google<br>Apple Park·计算机馆</div></div>
+    <div class="ovc"><div class="di">🌁</div><div class="dr">Day 10 · 7/10</div><div class="dl">金门桥·艺术宫<br>渔人码头·九曲花街</div></div>
+    <div class="ovc"><div class="di">🔬</div><div class="dr">Day 11 · 7/11</div><div class="dl">加州科学院<br>Sausalito</div></div>
+    <div class="ovc hl-purple"><div class="di">🎾</div><div class="dr">Day 12–13 · 7/12-13</div><div class="dl"><strong>伯克利网球锦标赛</strong><br>San Pablo Park · 已确认</div></div>
+    <div class="ovc"><div class="di">🌲✈️</div><div class="dr">Day 14 · 7/14</div><div class="dl">Muir Woods上午<br>晚航SFO→DCA</div></div>
+    <div class="ovc"><div class="di">🏛️</div><div class="dr">Day 15–18 · 7/15-18</div><div class="dl">华盛顿DC<br>史密森尼全免费</div></div>
+    <div class="ovc"><div class="di">🚗</div><div class="dr">Day 19–20 · 7/19-20</div><div class="dl">马大·费城·普林斯顿<br>→纽约</div></div>
+    <div class="ovc"><div class="di">🗽</div><div class="dr">Day 21–23 · 7/21-23</div><div class="dl">纽约<br>自由女神·大都会·百老汇</div></div>
+    <div class="ovc"><div class="di">🚂</div><div class="dr">Day 24 · 7/24</div><div class="dl">波士顿一日游<br>哈佛·Berklee·MIT</div></div>
+    <div class="ovc"><div class="di">✈️</div><div class="dr">Day 25 · 7/25</div><div class="dl">纽约休闲<br>→EWR回国</div></div>
+  </div>
+
+  <div class="hl gold" style="margin-top:18px;">
+    🚗 <strong>两段租车：</strong>① LAX取(Day1) → SFO还(Day14下午)，西岸14天；② DC/MD取(Day19) → NJ还(Day20)，2天短租。DC市区＋纽约＋波士顿全程公共交通。
   </div>
 </div>
 
-<!-- URGENT BOOKING -->
-<div class="urgent" id="booking">
-  <div class="urgent-header">🔴 预订清单 — 按紧急程度排序</div>
-  <div class="urgent-body">
+<hr class="div">
 
-    <div style="font-weight:700;font-size:.85rem;color:#c62828;margin:8px 0 4px">🔴 立即预订！越快越好</div>
+<!-- BOOKING -->
+<div class="section" id="booking">
+  <div class="section-header">
+    <div class="section-icon">📋</div>
+    <div class="section-title"><h2>预订清单（按紧急程度）</h2></div>
+  </div>
+  <div class="book-grid">
+    <div class="book-item"><div class="urg ur"></div><div>
+      <h4>🌲 Muir Woods 入园预约（不可现场购票！）<span class="tag tag-warn">立即！</span></h4>
+      <p>$15/人(16岁以上)，停车$8。选早场8-9am，旺季极难抢。</p>
+      <a href="https://gomuirwoods.com" target="_blank">gomuirwoods.com</a>
+    </div></div>
+    <div class="book-item"><div class="urg ur"></div><div>
+      <h4>🏰 迪士尼乐园门票（7月旺季）<span class="tag tag-warn">立即！</span></h4>
+      <p>另买Genie+ $25-35/人节省排队时间。</p>
+      <a href="https://disneyland.disney.go.com/tickets/" target="_blank">disneyland.disney.go.com/tickets</a>
+    </div></div>
+    <div class="book-item"><div class="urg ur"></div><div>
+      <h4>⚓ USS Midway小鹰号航母博物馆 <span class="tag tag-new">V4新增</span></h4>
+      <p>成人$26，儿童(6-12岁)$15。网上购票省排队。Day4上午。</p>
+      <a href="https://www.midway.org/tickets/" target="_blank">midway.org/tickets</a>
+    </div></div>
+    <div class="book-item"><div class="urg ur"></div><div>
+      <h4>🐋 SeaWorld San Diego 海洋馆 <span class="tag tag-new">V4新增</span></h4>
+      <p>网购$65-85，比现场省$20+。含虎鲸Orca Encounter、海豚触摸、Emperor过山车。Day4下午。</p>
+      <a href="https://seaworld.com/san-diego/tickets/" target="_blank">seaworld.com/san-diego/tickets — 网购省钱</a>
+    </div></div>
+    <div class="book-item"><div class="urg ur"></div><div>
+      <h4>🔭 Getty Center 停车预约 <span class="tag tag-new">Day3新增</span></h4>
+      <p>博物馆免费，但停车$20须提前官网预约，旺季容易满。</p>
+      <a href="https://www.getty.edu/visit/center" target="_blank">getty.edu/visit/center</a>
+    </div></div>
+    <div class="book-item"><div class="urg ur"></div><div>
+      <h4>🎾 伯克利网球锦标赛 <span class="tag tag-ok">✓ 已确认</span></h4>
+      <p>Berkeley BG 18-12U Level 6 Junior Open · 7月12-13日 · San Pablo Park · 无需再预订</p>
+    </div></div>
+    <div class="book-item"><div class="urg ur"></div><div>
+      <h4>✈️ SFO → DCA 机票（7月14日晚）<span class="tag tag-warn">关键节点</span></h4>
+      <p>已有机票，确认值机时间。SFO还车须在起飞前3小时完成。</p>
+    </div></div>
+    <div class="book-item"><div class="urg uo"></div><div>
+      <h4>🏛️ 非裔美国人历史博物馆（每月15日00:01抢免费票）</h4>
+      <a href="https://nmaahc.si.edu/visit/passes" target="_blank">nmaahc.si.edu/visit/passes</a>
+    </div></div>
+    <div class="book-item"><div class="urg uo"></div><div>
+      <h4>🗽 自由女神渡轮（含Ellis Island）提前1-2月</h4>
+      <p>$24/成人，$14/儿童。</p>
+      <a href="https://www.statuecruises.com" target="_blank">statuecruises.com</a>
+    </div></div>
+    <div class="book-item"><div class="urg uo"></div><div>
+      <h4>🐟 蒙特雷湾水族馆（Day7，旺季提前预约）</h4>
+      <p>成人$59.95，儿童$39.95。</p>
+      <a href="https://www.montereybayaquarium.org" target="_blank">montereybayaquarium.org</a>
+    </div></div>
+    <div class="book-item"><div class="urg uo"></div><div>
+      <h4>🚂 Amtrak 纽约Penn → Boston South（Day24）往返</h4>
+      <a href="https://www.amtrak.com" target="_blank">amtrak.com — 同时购往返票省50%</a>
+    </div></div>
+    <div class="book-item"><div class="urg ug"></div><div>
+      <h4>🚗 租车：LAX取/SFO还(Day1-14)；DC/MD取/NJ还(Day19-20)</h4>
+      <a href="https://www.enterprise.com" target="_blank">enterprise.com</a> | <a href="https://www.hertz.com" target="_blank">hertz.com</a>
+    </div></div>
+  </div>
+</div>
 
-    <div class="book-item">
-      <span class="book-badge badge-red">立即</span>
-      <div class="book-info">
-        <strong>⛺ 优胜美地营地 Housekeeping Camp（5个月前开放预订）</strong>
-        <a href="https://www.recreation.gov/camping/gateways/2671" target="_blank">recreation.gov/camping/gateways/2671</a>
-        <div style="font-size:.78rem;color:#666">7月极热门，需最早抢</div>
+<hr class="div">
+
+<!-- LA -->
+<div class="section" id="la">
+  <div class="section-header">
+    <div class="section-icon">🌴</div>
+    <div class="section-title">
+      <h2>洛杉矶 · Day 1–3 · 7月1–3日</h2>
+      <p>住2晚，第3天游Griffith+Getty后下午南下圣地亚哥</p>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 1</span>
+      <span class="day-title">✈️ 抵达LAX · 取租车 · 圣莫妮卡海滩</span>
+      <span class="day-date">7月1日 周三</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">12:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>LAX取租车（此车开至Day14 SFO还）</strong>
+          <p>Enterprise/Hertz/Budget选SUV含全险+GPS，提前官网预订省20-30%。</p>
+          <a href="https://enterprise.com" target="_blank">enterprise.com</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">14:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 圣莫妮卡海滩 + 3号码头 Pacific Park</strong>
+          <p>踩浪玩沙，摩天轮$12，碰碰车$6。Promenade步行街看海上日落。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">18:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>晚餐：Santa Monica Promenade步行街</strong>
+          <p>The Lobster 海景龙虾$60/人 · Clam Chowder酸面包碗$12</p>
+        </div></li>
+      </ul>
+      <div class="hl">💡 停车贵（$3/30min），海滩骑共享单车更划算。Promenade周五六晚有免费户外表演！</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 2</span>
+      <span class="day-title">🏰 迪士尼乐园 全天</span>
+      <span class="day-date">7月2日 周四</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">08:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ Disneyland Park 全天（阿纳海姆）</strong>
+          <p>必玩：Star Wars Galaxy's Edge、Indiana Jones Adventure、Matterhorn Bobsleds。21:30烟火秀。</p>
+          <a href="https://disneyland.disney.go.com/tickets/" target="_blank">disneyland.disney.go.com/tickets</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">21:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 园内烟火秀！</strong>
+          <p>看完返洛杉矶酒店休息，明日上午游Griffith+Getty再南下。</p>
+        </div></li>
+      </ul>
+      <div class="hl">💡 7月旺季必买 <strong>Genie+（$25-35/人）</strong>；带零食水进园省$40+；10岁女儿约140cm几乎所有项目可玩！</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 3</span>
+      <span class="day-title">🔭 Griffith天文馆 · 🎨 Getty博物馆 → 下午南下圣地亚哥 <span class="tag tag-new">V4新增</span></span>
+      <span class="day-date">7月3日 周五</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>好莱坞大道 + 星光大道（顺路30分钟打卡）</strong>
+          <p>TCL中国戏院明星手印拍照，出发前往Griffith。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">10:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ Griffith Observatory 格里菲斯天文馆</strong>
+          <p>室外完全免费！俯瞰洛杉矶全景，好莱坞标志近在眼前。游览约1.5小时。<br>
+          <strong>Samuel Oschin球幕秀：成人$10，儿童$6。只能当天现场购，约14点场较易拿到。</strong></p>
+          <a href="https://griffithobservatory.org" target="_blank">griffithobservatory.org ⚠️ 周一关闭，今天周五 ✓</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">12:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>午餐：Roscoe's Chicken &amp; Waffles（好莱坞附近）</strong>
+          <p>炸鸡华夫饼$20，LA文化icon，Griffith到这里约10分钟。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ Getty Center 盖蒂博物馆（免费！停车$20须提前预约）</strong>
+          <p>梵高、莫奈、拉斐尔真迹，世界级收藏。俯瞰LA全景，花园极美。游览约1.5小时。</p>
+          <a href="https://www.getty.edu/visit/center" target="_blank">getty.edu/visit/center ⚠️ 停车须提前预约！</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">15:30</div><div class="tl-dot go"></div><div class="tl-content">
+          <strong>🚗 出发南下圣地亚哥（I-5南行约2-2.5小时）</strong>
+          <p>周五下午LA→SD方向通常顺畅。约18:00抵达，办入住休息，明天是满满当当的圣地亚哥日！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">18:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>圣地亚哥入住 · 轻松晚餐</strong>
+          <p>Old Town区 Casa Guadalajara 正宗墨西哥菜$25，或Embarcadero海湾边餐厅。</p>
+        </div></li>
+      </ul>
+      <div class="hl gold">
+        ⏱️ <strong>时间节奏：</strong>Griffith(10:00-12:00含球幕秀) → 午餐(12:00-13:15) → Getty(13:30-15:15) → 出发(15:30)。两个景点各约1.5-2小时，从容不赶。<strong>Getty停车务必提前官网预约，否则无法入场！</strong>
       </div>
     </div>
-    <div class="book-item">
-      <span class="book-badge badge-red">立即</span>
-      <div class="book-info">
-        <strong>⛺ 红杉 Lodgepole Campground（6个月前开放）</strong>
-        <a href="https://www.recreation.gov/camping/gateways/2679" target="_blank">recreation.gov/camping/gateways/2679</a>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- SAN DIEGO -->
+<div class="section" id="sd">
+  <div class="section-header">
+    <div class="section-icon">⚓</div>
+    <div class="section-title">
+      <h2>圣地亚哥 · Day 4–5 · 7月4–5日</h2>
+      <p>住2晚（Day3晚入住 Day5夜出发）· 小鹰号 + SeaWorld海洋馆 + 国庆烟火 <span class="tag tag-new">V4完整版</span></p>
+    </div>
+  </div>
+
+  <div class="hl green" style="margin-bottom:20px;">
+    🗓️ <strong>圣地亚哥两天安排逻辑：</strong>Day4（7月4日国庆）上午小鹰号航母，下午SeaWorld海洋馆，晚上Big Bay Boom国庆烟火。Day5上午La Jolla，下午出发1号公路。内容满满，不重叠！
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 4</span>
+      <span class="day-title">⚓ 小鹰号航母 · 🐋 SeaWorld海洋馆 · 🎆 Big Bay Boom国庆烟火</span>
+      <span class="day-date">7月4日 周六 · 🇺🇸 美国独立日！</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">08:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ USS Midway小鹰号航母博物馆（Embarcadero码头）</strong>
+          <p>全美最大独立航母博物馆！飞行甲板俯瞰圣地亚哥湾，29架历史飞机（F-14、A-6、SH-60等），可钻进真实座舱，塔台+舰长室全开放，飞行模拟器$5。预留2.5小时。<br>
+          成人$26，儿童(6-12岁)$15。</p>
+          <a href="https://www.midway.org/tickets/" target="_blank">midway.org/tickets — 网上购票省排队</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">11:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>午餐：Embarcadero海湾边</strong>
+          <p>The Fish Market 现捞海鲜$35，航母旁海景餐厅，饭后步行10分钟到SeaWorld停车场。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 🐋 SeaWorld San Diego 海洋馆 全下午！</strong>
+          <p>
+          · <strong>Orca Encounter 虎鲸表演</strong> — 全球最震撼的虎鲸近距离观赏秀，教育性演出非表演捕鱼，极震撼！<br>
+          · <strong>Dolphin Cove 海豚触摸</strong> — 伸手可摸到海豚！女儿必体验<br>
+          · <strong>Emperor 过山车</strong> — 加州最高跌落式过山车(153尺)，强烈刺激！<br>
+          · <strong>Manta 蝠鲼飞翔过山车</strong> — 平躺姿势翱翔，独特体验<br>
+          · <strong>Wild Arctic 北极馆</strong> — 真实白鲸和北极熊近距离观赏<br>
+          · <strong>Sea Lion &amp; Otter Stadium</strong> — 海狮海獭混合表演，诙谐有趣<br>
+          网购$65-85，比现场省$20+。
+          </p>
+          <a href="https://seaworld.com/san-diego/tickets/" target="_blank">seaworld.com/san-diego/tickets</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">17:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>离开SeaWorld，前往Embarcadero Marina Park占位</strong>
+          <p>带野餐垫+驱蚊药+零食，提前2小时抢最佳观赏位置（免费）。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">21:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 🎆 Big Bay Boom — 全美最大国庆烟火之一！</strong>
+          <p>圣地亚哥港湾4艘驳船同步发射，18分钟震撼烟火秀，全美国庆最具规模之一！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">22:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>返回酒店休息（今晚住圣地亚哥，明天La Jolla后出发）</strong>
+        </div></li>
+      </ul>
+      <div class="hl red">⚠️ 国庆极拥挤！SeaWorld建议开门就到（网购省排队）。烟火结束即快速离场，提前用SpotHero订停车位。</div>
+      <div class="hl gold">💡 <strong>SeaWorld贴士：</strong>7月4日国庆SeaWorld可能有专属烟火或灯光秀（往年有），入场后问工作人员。带防晒+换洗衣物（海豚触摸/Manta过山车可能被泼水）。</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 5</span>
+      <span class="day-title">🌊 La Jolla海湾海狮 · Balboa Park · 下午出发1号公路</span>
+      <span class="day-date">7月5日 周日</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ La Jolla Cove 海湾 + 海狮聚集地（完全免费！）</strong>
+          <p>水晶蓝透明海水，岩石礁上晒太阳的海狮，女儿必拍。可选浮潜装备租用。<br>
+          旁边 Children's Pool 海滩可近距离看海豹（保护区，不可触碰）。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">11:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Balboa Park 巴尔博亚公园（轻松游）</strong>
+          <p>西班牙殖民式建筑群，喷泉广场拍照，可进1-2个免费博物馆（自然历史博物馆等）。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>午餐：Old Town San Diego</strong>
+          <p>Casa Guadalajara 正宗墨西哥菜$25（或Gaslamp Quarter区选择更多）。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">14:30</div><div class="tl-dot go"></div><div class="tl-content">
+          <strong>🚗 出发，沿US-101北上，夜宿圣塔芭芭拉（约3小时）</strong>
+          <p>La Super-Rica Taqueria 在圣塔芭芭拉，Julia Child最爱，可作晚餐$15。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">18:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>抵达圣塔芭芭拉，入住酒店</strong>
+          <p>今晚轻松休息，明天正式进入1号公路精华段！</p>
+        </div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- PCH -->
+<div class="section" id="pch">
+  <div class="section-header">
+    <div class="section-icon">🛣️</div>
+    <div class="section-title">
+      <h2>1号公路自驾 · Day 6–7 · 7月6–7日</h2>
+      <p>圣塔芭芭拉 → Big Sur → 蒙特雷水族馆 → Brentwood</p>
+    </div>
+  </div>
+
+  <div class="hl gold" style="margin-bottom:18px;">
+    🛣️ <strong>加州1号公路（Pacific Coast Highway）</strong>全球最美海岸公路之一。断崖峭壁、碧海苍茫、Big Sur原始森林……慢开慢停，每天约200-250英里，留足停车拍照时间。
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 6</span>
+      <span class="day-title">🛣️ 圣塔芭芭拉 → Pismo Beach → Big Sur · 夜宿蒙特雷</span>
+      <span class="day-date">7月6日 周一</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">08:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>圣塔芭芭拉早晨 · 白色教堂 + State Street咖啡</strong>
+          <p>Handlebar Coffee早餐$8，拍圣塔芭芭拉最美西班牙殖民式教堂。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>出发北上接US-101 → 转CA-1（1号公路正式开始）</strong>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">12:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Pismo Beach 皮斯莫海滩（午餐站）</strong>
+          <p>蛤蜊汤碗$14，海滨小城午餐休息。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>莫罗湾 Morro Bay · Morro Rock（顺路停留30分钟）</strong>
+          <p>577尺火山岩出海，海獭出没！冰淇淋$5。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">15:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 进入 Big Sur 大苏尔（1号公路最精华段！）</strong>
+          <p>· <strong>Bixby Bridge</strong> — 1号公路最上镜悬索桥，必停拍照！<br>
+             · <strong>McWay Falls</strong> — 海边瀑布直落沙滩，全世界罕见地貌，完全免费！<br>
+             · <strong>Pfeiffer Beach 紫沙滩</strong> — 锰质矿物染紫的神奇沙滩，$12停车费</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">19:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>夜宿蒙特雷 Monterey</strong>
+          <p>明日水族馆+17英里路，住宿选择充足。</p>
+        </div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 7</span>
+      <span class="day-title">🦦 蒙特雷湾水族馆 · 17英里路 · 圣克鲁斯 → 抵达Brentwood</span>
+      <span class="day-date">7月7日 周二</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 蒙特雷湾水族馆 Monterey Bay Aquarium</strong>
+          <p>全美顶级水族馆！海獭展区（可爱度爆表）、巨型水母馆（梦幻蓝光）、鱼群隧道。成人$59.95，儿童$39.95。至少2.5小时。</p>
+          <a href="https://www.montereybayaquarium.org" target="_blank">montereybayaquarium.org — 提前预约</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">12:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Fisherman's Wharf 午餐</strong>
+          <p>现捞龙虾/蛤蜊$30-40，海边餐厅，看海鸥抢食也是一景。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>17英里景观公路 17-Mile Drive（$12.25/辆入场费）</strong>
+          <p>Lone Cypress孤柏树（1号公路最具代表性画面），Pebble Beach著名高尔夫球场豪宅海景。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">15:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Santa Cruz 圣克鲁斯（顺路）</strong>
+          <p>Santa Cruz Beach Boardwalk 西岸最古老游乐园，女儿玩1小时，$5起。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">17:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 🏠 抵达二姑家 Brentwood！</strong>
+          <p>圣克鲁斯→Brentwood约1小时15分（经680号高速）。家庭晚餐，正式开始湾区生活！</p>
+        </div></li>
+      </ul>
+      <div class="hl">💡 <strong>注意：</strong>圣地亚哥SeaWorld已看过海洋馆，蒙特雷水族馆侧重科教展示（深海水母、海獭研究），体验截然不同，两者互补不重复！</div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- SF BAY AREA -->
+<div class="section" id="sf">
+  <div class="section-header">
+    <div class="section-icon">🌁</div>
+    <div class="section-title">
+      <h2>旧金山湾区 · Day 8–11 · 7月8–11日</h2>
+      <p>住二姑家Brentwood，Day9从斯坦福开始</p>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 8</span>
+      <span class="day-title">🏠 休息日 · 二姑家团聚 · Brentwood鲜果采摘</span>
+      <span class="day-date">7月8日 周三</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">上午</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>放松休整 · 洗衣理行李</strong>
+          <p>连续7天高强度，今天彻底放松。补觉，和二姑喝咖啡聊天。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">下午</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ Brentwood鲜果采摘 — 7月正是旺季！</strong>
+          <p>Brentwood以现摘鲜果著名，7月盛产桃子、油桃、玉米，二姑带路找本地农场。女儿在美国农场亲手摘果的体验！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">18:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 二姑家温馨晚餐</strong>
+          <p>家的味道，讲美国生活故事，孩子与表亲一起玩。</p>
+        </div></li>
+      </ul>
+      <div class="hl gold">🌟 这是全程的"充电日"——7天连续自驾后的休整，也是最珍贵的家人相聚时光。</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 9</span>
+      <span class="day-title">🎓 斯坦福 · Google · Apple Park · 计算机历史博物馆</span>
+      <span class="day-date">7月9日 周四</span>
+    </div>
+    <div class="day-body">
+      <div class="hl green" style="margin-bottom:12px;">📍 Brentwood→斯坦福约55-60分钟（I-580→I-680→US-101），早出发从容游览。</div>
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 斯坦福大学 Stanford University</strong>
+          <p>Hoover Tower登顶$5俯瞰校园，Main Quad广场，Memorial Church精美彩窗，免费学生导览。</p>
+          <a href="https://visit.stanford.edu/tours" target="_blank">visit.stanford.edu/tours — 提前预约导览</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">11:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Google园区（Mountain View）</strong>
+          <p>彩色自行车+恐龙雕塑，Android Robot打卡，户外免费参观。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Apple Park游客中心（Cupertino）</strong>
+          <p>最新Apple展览，AR模型看总部环形飞船，完全免费。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">14:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>计算机历史博物馆 Computer History Museum</strong>
+          <p>从算盘到AI！ENIAC原件，Google原始服务器，互动编程展区。成人$19.99，6-17岁$14.99。</p>
+          <a href="https://computerhistory.org/visit" target="_blank">computerhistory.org/visit</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">17:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>返回Brentwood（约55分钟）</strong>
+        </div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 10</span>
+      <span class="day-title">🌁 旧金山市区 · 金门大桥 · 艺术宫 · 渔人码头 · 九曲花街</span>
+      <span class="day-date">7月10日 周五</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">08:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>出发旧金山（Brentwood→SF走Bay Bridge约55分钟）</strong>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">10:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 金门大桥 Golden Gate Bridge</strong>
+          <p>步行过桥/Crissy Field拍全桥倒影/Vista Point北岸远眺，完全免费。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">11:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ Palace of Fine Arts 艺术宫（完全免费！）</strong>
+          <p>步行至金门大桥15分钟。玫瑰红圆顶，古罗马柱廊，天鹅湖面倒影如梦如幻。SF最上镜建筑，女儿会爱上！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">12:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>渔人码头午餐 · 39号码头海狮</strong>
+          <p>Boudin Bakery酸面包蛤蜊汤碗$12 · Ghirardelli热巧克力圣代$13（女儿必吃！）</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">14:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Coit Tower + 九曲花街 Lombard Street + 百年缆车</strong>
+          <p>登Coit Tower俯瞰全城$14，坐Powell-Hyde缆车$8/次下坡，SF最独特城市交通！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">17:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>唐人街晚餐 → 返Brentwood</strong>
+          <p>R&amp;G Lounge 盐焗螃蟹$60-80（需提前订位）。</p>
+        </div></li>
+      </ul>
+      <div class="hl">💡 7月早晨SF多雾，金门大桥建议10点后拍照更清晰。艺术宫早晨光线最美。</div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 11</span>
+      <span class="day-title">🔬 加州科学院 · Golden Gate Park · 可选Sausalito</span>
+      <span class="day-date">7月11日 周六</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 加州科学院 California Academy of Sciences</strong>
+          <p>热带雨林穹顶（真实蝴蝶飞舞！）+水族馆+天文馆+自然历史四合一！成人$40，4-17岁$32，需提前预约。</p>
+          <a href="https://calacademy.org/visit" target="_blank">calacademy.org/visit — 需提前预约</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Golden Gate Park午餐 · 公园漫步</strong>
+          <p>旁边日式花园$15，音乐广场草坪野餐。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">15:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>可选：Sausalito艺术小镇（车程20分钟）</strong>
+          <p>彩色小屋，海湾平台遥望SF天际线，极上镜。Fish Restaurant现捞海鲜$35。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">17:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>返回Brentwood · 早睡！</strong>
+          <p>明天孩子网球锦标赛Day1，提前确认比赛时间、准备装备。</p>
+        </div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- TENNIS -->
+<div class="section" id="tennis">
+  <div class="section-header">
+    <div class="section-icon">🎾</div>
+    <div class="section-title">
+      <h2>伯克利网球锦标赛 · Day 12–13 · 7月12–13日</h2>
+      <p><span class="tag tag-ok">✓ 已确认</span> 以比赛为核心，大人同步游览伯克利</p>
+    </div>
+  </div>
+
+  <div class="tennis-box">
+    <h3>🎾 赛事详情（已确认）</h3>
+    <table>
+      <tr><td>赛事名称</td><td><strong>Berkeley BG 18-12U Level 6 Junior Open</strong></td></tr>
+      <tr><td>比赛日期</td><td>2026年7月12日（周日）— 7月13日（周一）</td></tr>
+      <tr><td>主场地</td><td><strong>San Pablo Park</strong>，Berkeley, CA</td></tr>
+      <tr><td>Brentwood→球场</td><td>约35分钟（I-4→I-80W→San Pablo Ave）</td></tr>
+      <tr><td>行动项</td><td>提前确认具体开球时间、分组签表、报到要求</td></tr>
+    </table>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 12</span>
+      <span class="day-title">🎾 网球锦标赛 Day 1 · 大人游UC Berkeley</span>
+      <span class="day-date">7月12日 周日</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">早晨</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 孩子：出发San Pablo Park参加网球锦标赛！</strong>
+          <p>带球拍(2把)、护腕、帽子、SPF50+防晒、充足饮水、能量棒。比赛全程陪伴加油！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">等待间</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>大人游 UC Berkeley（步行至San Pablo Park约10分钟）</strong>
+          <p>· Campanile钟楼登顶$4，湾区360°全景<br>
+             · Sather Gate · Memorial Glade草坪<br>
+             · 大学纪念品店买熊队周边！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">午餐</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Telegraph Avenue + Cheeseboard Pizza</strong>
+          <p>伯克利最文艺街区，Cheeseboard当日口味$4/片，排长队值得！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">下午</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>回比赛场地陪孩子比赛 · 加油！</strong>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">晚上</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 不论输赢，庆功晚餐！返Brentwood</strong>
+          <p>这是孩子在美国打的正式网球锦标赛，值得好好庆祝！</p>
+        </div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header">
+      <span class="day-badge">Day 13</span>
+      <span class="day-title">🎾 网球锦标赛 Day 2 · 可选Oakland唐人街</span>
+      <span class="day-date">7月13日 周一</span>
+    </div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">早晨</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 孩子：网球锦标赛 Day 2</strong>
+          <p>根据赛制可能是淘汰赛/半决赛/决赛，保持状态，全力以赴！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">间隙</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>大人可选：Oakland Chinatown 奥克兰唐人街（距伯克利10分钟）</strong>
+          <p>正宗粤式点心早茶，热闹亚裔社区。或者就在球场边陪孩子！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">赛后</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>返回Brentwood · 打包明日Muir Woods行李</strong>
+          <p>带防风外套（Muir Woods林内凉湿）、运动鞋。明天早出发！</p>
+        </div></li>
+      </ul>
+      <div class="hl purple">🎾 <strong>装备清单：</strong>球拍2把 · 护腕 · 帽子 · SPF50+防晒 · 足量饮水 · 能量棒/香蕉 · 换洗球衣</div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- MUIR WOODS + DAY14 -->
+<div class="section" id="muir">
+  <div class="section-header">
+    <div class="section-icon">🌲</div>
+    <div class="section-title">
+      <h2>Muir Woods + 旧金山最后告别 + 晚航飞DC · Day 14 · 7月14日</h2>
+      <p>上午古树森林，下午SFO还车，晚上飞华盛顿DC <span class="tag tag-new">V4关键</span></p>
+    </div>
+  </div>
+
+  <div class="day-card" id="day14">
+    <div class="day-header">
+      <span class="day-badge">Day 14</span>
+      <span class="day-title">🌲 Muir Woods早场 · SF告别 · 🚗 SFO还车 · ✈️ 晚航飞DC</span>
+      <span class="day-date">7月14日 周二</span>
+    </div>
+    <div class="day-body">
+      <div class="hl gold" style="margin-bottom:14px;">
+        ⏱️ <strong>时间规划（以晚19:00起飞为例）：</strong>需16:00前到SFO还车（还车+安检+候机约3小时）。Muir Woods早场08:30进园，约11:00完成，充裕时间告别SF后前往SFO。
       </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-red">立即</span>
-      <div class="book-info">
-        <strong>⛵ 恶魔岛 Alcatraz 渡轮（7月2-3周前即售罄）</strong>
-        <a href="https://www.alcatrazcruises.com" target="_blank">alcatrazcruises.com</a>
-        <div style="font-size:.78rem;color:#666">$41.45/成人，$27/5-11岁，含中文语音导览</div>
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">07:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>出发（Brentwood→Muir Woods约1小时15分）</strong>
+          <p>带好全部行李，今天不回Brentwood。Bay Bridge→SF→金门大桥→Muir Woods。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">08:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ Muir Woods National Monument（早场！）</strong>
+          <p>海岸红杉树龄超1000年，高70余米，清晨凉雾缭绕极震撼。Main Trail Loop约1.5小时，平坦好走。申请Junior Ranger徽章！</p>
+          <a href="https://gomuirwoods.com" target="_blank">gomuirwoods.com ⚠️ 必须提前预约！$15/人，停车$8</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">10:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Sausalito 艺术小镇快速午餐（车程15分钟）</strong>
+          <p>Fish Restaurant现捞海鲜$35，海湾平台遥望SF天际线，最后一顿西岸海鲜！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">12:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>SF最后打卡：Ferry Building渡轮大厦市集</strong>
+          <p>每周二周六有农夫市集+特色小食，边走边吃，轻松告别旧金山。Blue Bottle Coffee最后一杯。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">14:00</div><div class="tl-dot go"></div><div class="tl-content">
+          <strong>🚗 驾车前往SFO机场（SF→SFO约30分钟，注意高峰期堵车）</strong>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">14:30</div><div class="tl-dot go"></div><div class="tl-content">
+          <strong>🚗 SFO机场还车（西岸14天自驾圆满完成！）</strong>
+          <p>Enterprise/Hertz在SFO均有还车点，手续约20分钟。还完车办理值机。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">晚上</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>✈️ SFO → DCA 华盛顿里根国家机场（约5.5小时）</strong>
+          <p>抵达DC深夜，坐Metro Orange/Silver/Blue线约30分钟进市区。</p>
+        </div></li>
+      </ul>
+      <div class="hl green">
+        ✅ <strong>西岸14天自驾完整闭环：</strong>LAX取车(Day1) → SFO还车(Day14)，洛杉矶→圣地亚哥→1号公路→旧金山湾区→网球锦标赛→Muir Woods，圆满收官！
       </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-red">立即</span>
-      <div class="book-info">
-        <strong>🏰 迪士尼乐园门票（7月旺季需提前1月以上）</strong>
-        <a href="https://disneyland.disney.go.com/tickets/" target="_blank">disneyland.disney.go.com/tickets</a>
-        <div style="font-size:.78rem;color:#666">另买 Genie+ $25-35/人节省排队时间</div>
-      </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-red">每月15日00:01抢</span>
-      <div class="book-info">
-        <strong>🏛️ 非裔美国人历史博物馆（全美最难抢免费票！）</strong>
-        <a href="https://nmaahc.si.edu/visit/passes" target="_blank">nmaahc.si.edu/visit/passes</a>
-        <div style="font-size:.78rem;color:#666">每月15日00:01整点发放，几分钟售罄；没抢到可早7点前门口排standby</div>
-      </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-red">立即</span>
-      <div class="book-info">
-        <strong>🎟️ 优胜美地入园时间票 Day-Use Reservation（$2/辆）</strong>
-        <a href="https://www.recreation.gov/timed-entry/10086745" target="_blank">recreation.gov/timed-entry/10086745</a>
-      </div>
-    </div>
-
-    <div style="font-weight:700;font-size:.85rem;color:#e65100;margin:16px 0 4px">🟠 出发前1-2个月预订</div>
-
-    <div class="book-item">
-      <span class="book-badge badge-orange">1-2月前</span>
-      <div class="book-info">
-        <strong>🗽 自由女神渡轮（含Ellis Island）</strong>
-        <a href="https://www.statuecruises.com" target="_blank">statuecruises.com</a>
-        <div style="font-size:.78rem;color:#666">$24/成人，$14/儿童</div>
-      </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-orange">1-2月前</span>
-      <div class="book-info">
-        <strong>🎭 百老汇《狮子王》</strong>
-        <a href="https://www.broadway.com" target="_blank">broadway.com</a>
-        <div style="font-size:.78rem;color:#666">或当日TKTS亭折扣票 tkts.com</div>
-      </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-orange">1-2月前</span>
-      <div class="book-info">
-        <strong>🚂 Amtrak 纽约↔波士顿（Day24往程 + Day25返Newark直达）</strong>
-        <a href="https://www.amtrak.com" target="_blank">amtrak.com</a>
-        <div style="font-size:.78rem;color:#666">提前买便宜50%；Day25选 Boston→Newark Airport Station(EWR) 直达机场</div>
-      </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-orange">1-2月前</span>
-      <div class="book-info">
-        <strong>🏀 NBA California Classic 2026（4-5月发布票务）</strong>
-        <a href="https://www.nba.com" target="_blank">nba.com</a>
-        <div style="font-size:.78rem;color:#666">7月初在Chase Center(SF)或Golden 1 Center(萨克拉门托)举行，两地轮流</div>
-      </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-orange">1-2月前</span>
-      <div class="book-info">
-        <strong>🥁 Blue Man Group / STOMP 打击乐演出</strong>
-        <a href="https://www.blueman.com/tour" target="_blank">blueman.com/tour</a> &nbsp;|&nbsp;
-        <a href="https://stomponline.com" target="_blank">stomponline.com</a>
-        <div style="font-size:.78rem;color:#666">查2026年7月东岸巡演场次</div>
-      </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-orange">提前购</span>
-      <div class="book-info">
-        <strong>🏞️ America the Beautiful 国家公园年票（$80/辆）</strong>
-        <a href="https://store.usgs.gov/america-the-beautiful-passes" target="_blank">store.usgs.gov/america-the-beautiful-passes</a>
-        <div style="font-size:.78rem;color:#666">覆盖红杉+优胜美地，至少节省$70</div>
-      </div>
-    </div>
-    <div class="book-item">
-      <span class="book-badge badge-orange">提前预约</span>
-      <div class="book-info">
-        <strong>🚗 租车：LAX取车 / SFO还车；DC/MD附近二次取车 / NJ还车</strong>
-        <a href="https://www.enterprise.com" target="_blank">enterprise.com</a> &nbsp;|&nbsp;
-        <a href="https://www.hertz.com" target="_blank">hertz.com</a>
-        <div style="font-size:.78rem;color:#666">选SUV含全险，提前官网比现场便宜20-30%</div>
-      </div>
-    </div>
-
-    <div style="font-weight:700;font-size:.85rem;color:#1b5e20;margin:16px 0 4px">🟢 出发前1个月提前预约（免费场所）</div>
-    <div style="font-size:.83rem;color:#555;line-height:2">
-      &nbsp;·&nbsp;<a class="link" href="https://si.edu/visit" target="_blank">史密森尼全系博物馆+动物园 si.edu/visit</a>&nbsp;&nbsp;
-      &nbsp;·&nbsp;<a class="link" href="https://www.visitthecapitol.gov/visit/book-a-tour" target="_blank">国会大厦导览</a>&nbsp;&nbsp;
-      &nbsp;·&nbsp;<a class="link" href="https://www.recreation.gov/ticket/facility/253731" target="_blank">费城独立大厅导览</a>&nbsp;&nbsp;
-      &nbsp;·&nbsp;<a class="link" href="https://admission.princeton.edu/campus-visit" target="_blank">普林斯顿参观</a>&nbsp;&nbsp;
-      &nbsp;·&nbsp;<a class="link" href="https://college.harvard.edu/admissions/visit" target="_blank">哈佛免费导览</a>&nbsp;&nbsp;
-      &nbsp;·&nbsp;<a class="link" href="https://visit.stanford.edu/tours" target="_blank">斯坦福导览</a>&nbsp;&nbsp;
-      &nbsp;·&nbsp;<a class="link" href="https://www.calacademy.org/visit" target="_blank">加州科学院</a>
+      <div class="hl red">⚠️ Muir Woods<strong>不可现场购票，必须100%提前在线预约！</strong>旺季极难抢，强烈建议开票即买。</div>
     </div>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
-<div class="container">
+<hr class="div">
 
-<!-- ===================== 洛杉矶 ===================== -->
-<div class="section-title" id="la">
-  <div class="section-dot dot-la"></div>
-  <h2>洛杉矶 · Day 1–3 · 7月1–3日</h2>
-</div>
-
-<div class="day-card">
-  <div class="day-header la">
-    <div class="day-num">Day 1</div>
-    <div>
-      <div class="day-title">抵达LAX · 取租车 · 圣莫妮卡海滩</div>
-      <div class="day-date">7月1日（周二）</div>
+<!-- DC -->
+<div class="section" id="dc">
+  <div class="section-header">
+    <div class="section-icon">🏛️</div>
+    <div class="section-title">
+      <h2>华盛顿DC · Day 15–18 · 7月15–18日</h2>
+      <p>史密森尼博物馆群完全免费！7月旺季提前预约</p>
     </div>
   </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">12:00</span><div class="tl-content"><strong>LAX国际机场 — 取租车（此车开到7月14日SFO还）</strong>Enterprise/Hertz/Budget，选SUV含全险+GPS。提前官网预订省20-30%。</div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>圣莫妮卡海滩 + 3号码头 Pacific Park</strong>踩浪玩沙，摩天轮$12，碰碰车$6，看日落。</div></li>
-      <li class="tl-item"><span class="tl-time">18:30</span><div class="tl-content"><strong>晚餐：Santa Monica Promenade步行街</strong><span class="food-tag">The Lobster $60/人 海景</span><span class="food-tag">码头Clam Chowder酸面包碗 $12</span></div></li>
-    </ul>
-    <div class="tip">💡 停车贵（$3/30min），海滩周边骑共享单车更划算。Promenade免费户外表演每周五六晚有！</div>
-  </div>
-</div>
 
-<div class="day-card">
-  <div class="day-header la">
-    <div class="day-num">Day 2</div>
-    <div>
-      <div class="day-title">迪士尼乐园 全天</div>
-      <div class="day-date">7月2日（周三）</div>
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 15</span><span class="day-title">🛬 抵DC · 航空航天博物馆 · National Mall漫步</span><span class="day-date">7月15日 周三</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">下午</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 国家航空航天博物馆（免费！）</strong>
+          <p>真实登月飞船、宇航服、月球岩石，IMAX太空电影$12。</p>
+          <a href="https://airandspace.si.edu/visit/mall" target="_blank">airandspace.si.edu — 免费预约</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">16:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>National Mall漫步（全免费）</strong>
+          <p>林肯纪念堂→倒影池（阿甘正传取景地！）→越战纪念碑→华盛顿纪念碑</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">晚餐</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Jaleo西班牙Tapas / Old Ebbitt Grill（1856年最老餐厅）</strong>
+        </div></li>
+      </ul>
     </div>
   </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">08:00</span><div class="tl-content"><strong>Disneyland Park（阿纳海姆）— 全天</strong>必玩：Star Wars: Galaxy's Edge、Indiana Jones Adventure、Matterhorn Bobsleds、Haunted Mansion。21:30烟火秀。<br><a class="link" href="https://disneyland.disney.go.com/tickets/" target="_blank">disneyland.disney.go.com/tickets</a></div></li>
-    </ul>
-    <div class="tip">💡 7月旺季必买<strong>Genie+</strong>（$25-35/人）；带零食和水进园省$40+；提前下载Disneyland App查实时排队。10岁女儿约140cm，几乎所有项目均可玩！</div>
-  </div>
-</div>
 
-<div class="day-card">
-  <div class="day-header la">
-    <div class="day-num">Day 3</div>
-    <div>
-      <div class="day-title">好莱坞 · Griffith天文馆 · 盖蒂博物馆</div>
-      <div class="day-date">7月3日（周四）</div>
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 16</span><span class="day-title">白宫 · 自然历史博物馆 · 国会大厦 · 国会图书馆</span><span class="day-date">7月16日 周四</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot"></div><div class="tl-content"><strong>白宫外观 + Lafayette Square</strong></div></li>
+        <li class="tl-item"><div class="tl-time">10:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 自然历史博物馆（免费！）</strong>
+          <p>霍普之钻45.52克拉、全身T-Rex、非洲象标本！</p>
+          <a href="https://naturalhistory.si.edu/visit/passes" target="_blank">naturalhistory.si.edu</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">14:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>国会大厦导览（免费，需预约）+ 国会图书馆（免费）</strong>
+          <a href="https://visitthecapitol.gov/visit/book-a-tour" target="_blank">visitthecapitol.gov</a>
+        </div></li>
+      </ul>
     </div>
   </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>好莱坞大道 · 星光大道（免费）</strong>TCL中国戏院明星手印，拍照纪念品。</div></li>
-      <li class="tl-item"><span class="tl-time">12:00</span><div class="tl-content"><strong>午餐：Roscoe's Chicken &amp; Waffles</strong><span class="food-tag">炸鸡华夫饼 $20 LA文化icon</span></div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>⭐ Griffith Observatory 天文馆</strong>室外免费！俯瞰LA全景+好莱坞标志最佳点。Samuel Oschin球幕秀：成人$10，儿童$6（40分钟太空旅行）。<br><a class="link" href="https://griffithobservatory.org" target="_blank">griffithobservatory.org</a></div></li>
-      <li class="tl-item"><span class="tl-time">16:00</span><div class="tl-content"><strong>盖蒂博物馆 Getty Center（出发前顺路）</strong>世界级免费博物馆，俯瞰LA全景。停车$20需预约。<br><a class="link" href="https://getty.edu/visit/center" target="_blank">getty.edu/visit/center</a></div></li>
-    </ul>
-    <div class="tip">💡 Griffith天文馆球幕票只能当天现场购，不接受网购。周一关闭！下午14-15点场次较易买到。</div>
-  </div>
-</div>
 
-<!-- ===================== 圣地亚哥 ===================== -->
-<div class="section-title" id="sd">
-  <div class="section-dot dot-sd"></div>
-  <h2>圣地亚哥 · Day 4–5 · 7月4–5日</h2>
-</div>
-
-<div class="day-card">
-  <div class="day-header sd">
-    <div class="day-num">Day 4</div>
-    <div>
-      <div class="day-title">🇺🇸 美国国庆！圣地亚哥 + Big Bay Boom烟火</div>
-      <div class="day-date">7月4日（周五）国庆日</div>
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 17</span><span class="day-title">国家动物园 · ⭐ 非裔博物馆 · Georgetown · 间谍博物馆</span><span class="day-date">7月17日 周五</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ Smithsonian国家动物园（完全免费！）</strong>
+          <p>大熊猫！猩猩天桥（猩猩从头顶走过！），大象馆。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">11:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 非裔美国人国家博物馆 NMAAHC（全美最难抢免费票！）</strong>
+          <p>历史从奴隶贸易到奥巴马，极震撼。每月15日00:01整点抢！</p>
+          <a href="https://nmaahc.si.edu/visit/passes" target="_blank">nmaahc.si.edu/visit/passes</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">14:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Georgetown大学 + 间谍博物馆</strong>
+          <p>Georgetown Cupcake排队值得。间谍博物馆成人$25，7-11岁$15，10岁孩子超爱！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">晚餐</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>Ben's Chili Bowl $10（DC地标1958年，奥巴马最爱）</strong>
+        </div></li>
+      </ul>
     </div>
   </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>自驾 LA → 圣地亚哥（I-5南下约2小时）</strong></div></li>
-      <li class="tl-item"><span class="tl-time">11:30</span><div class="tl-content"><strong>Balboa Park</strong>西班牙殖民式建筑园区，多个博物馆，花园漂亮，免费散步。</div></li>
-      <li class="tl-item"><span class="tl-time">18:00</span><div class="tl-content"><strong>⭐ 提前占位！Embarcadero Marina Park</strong>Big Bay Boom国庆烟火最佳观赏点（免费）。带野餐垫+驱蚊药！</div></li>
-      <li class="tl-item"><span class="tl-time">21:00</span><div class="tl-content"><strong>🎆 Big Bay Boom 全美最大国庆烟火之一</strong>4艘驳船同步发射18分钟，震撼无比！</div></li>
-    </ul>
-    <div class="tip tip-warn">⚠️ 国庆节景区极拥挤！提前2小时占位，I-5停车提前预订 SpotHero。</div>
-  </div>
-</div>
 
-<div class="day-card">
-  <div class="day-header sd">
-    <div class="day-num">Day 5</div>
-    <div>
-      <div class="day-title">SeaWorld San Diego 全天 → 下午起程北上</div>
-      <div class="day-date">7月5日（周六）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>⭐ SeaWorld San Diego — 全天</strong>Orca Encounter虎鲸展、触摸海豚、Emperor过山车（加州最高跌落式153尺！）、Rescue Jr.儿童区。<br><a class="link" href="https://seaworld.com/san-diego/tickets/" target="_blank">seaworld.com/san-diego/tickets</a>（网购$65-85，比现场省$20+）</div></li>
-      <li class="tl-item"><span class="tl-time">16:00</span><div class="tl-content"><strong>下午离园，启程北上沿US-101</strong>往圣塔芭芭拉方向开行（约2.5小时）</div></li>
-      <li class="tl-item"><span class="tl-time">19:00</span><div class="tl-content"><strong>晚餐+住宿：圣塔芭芭拉 Santa Barbara</strong><span class="food-tag">State Street海鲜小馆</span><span class="food-tag">La Super-Rica Taco $12</span>在此住一晚，明日轻松抵达旧金山。</div></li>
-    </ul>
-    <div class="tip">💡 分两段开车避免疲劳！圣塔芭芭拉→旧金山约5小时，留第二天继续。</div>
-  </div>
-</div>
-
-<!-- ===================== NBA + 旧金山 ===================== -->
-<div class="section-title" id="sf">
-  <div class="section-dot dot-sf"></div>
-  <h2>NBA + 旧金山 · Day 6–9 · 7月6–9日</h2>
-</div>
-
-<div class="day-card">
-  <div class="day-header sf">
-    <div class="day-num">Day 6</div>
-    <div>
-      <div class="day-title">🏀 NBA California Classic！驾车北上抵旧金山</div>
-      <div class="day-date">7月6日（周日）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">08:30</span><div class="tl-content"><strong>圣塔芭芭拉出发 → 继续北上US-101</strong>途经San Luis Obispo（Pismo Beach午餐，蛤蜊汤碗$14），风景壮美。</div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>抵达旧金山/萨克拉门托酒店，放行李休息</strong></div></li>
-      <li class="tl-item"><span class="tl-time">19:00</span><div class="tl-content"><strong>⭐ NBA California Classic 夏季联赛</strong>双城轮流举办：<br>· Chase Center（旧金山）：直接入住SF即可<br>· Golden 1 Center（萨克拉门托）：距SF约1.5小时，当日往返<br>双场连续，含最新选秀新秀！夏季联赛氛围轻松，女儿体验绝佳！<br><a class="link" href="https://www.nba.com" target="_blank">nba.com — 关注2026年California Classic场次（约4-5月公布）</a></div></li>
-    </ul>
-    <div class="tip tip-warn">
-      ⚠️ <strong>NBA备选方案</strong>（如2026年California Classic不在7/6当天）：<br>
-      · 查 Chase Center（SF）同期其他活动<br>
-      · 查 Sacramento Kings 主场活动<br>
-      · 若比赛在7/7-7/8，Day6先到旧金山游览，比赛日再去看——完全不影响行程！
-    </div>
-    <div class="tip tip-book">🎟 建议票价：$30-80/人，夏季联赛比常规赛便宜且好买票。</div>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header sf">
-    <div class="day-num">Day 7</div>
-    <div>
-      <div class="day-title">金门大桥 · Sausalito · 恶魔岛 · 渔人码头</div>
-      <div class="day-date">7月7日（周一）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">08:30</span><div class="tl-content"><strong>金门大桥 Golden Gate Bridge</strong>步行或租自行车过桥，Crissy Field拍全景，Vista Point俯瞰SF全貌（免费）。</div></li>
-      <li class="tl-item"><span class="tl-time">10:30</span><div class="tl-content"><strong>Sausalito渡轮返SF</strong>渡轮$17，船上俯瞰城市天际线和恶魔岛。<br><a class="link" href="https://goldengateferry.org" target="_blank">goldengateferry.org</a></div></li>
-      <li class="tl-item"><span class="tl-time">12:30</span><div class="tl-content"><strong>渔人码头午餐</strong><span class="food-tag">Boudin Bakery酸面包蛤蜊汤碗 $12</span><span class="food-tag">Ghirardelli热巧克力圣代 $13</span></div></li>
-      <li class="tl-item"><span class="tl-time">14:30</span><div class="tl-content"><strong>⭐ 恶魔岛 Alcatraz Island</strong>中文语音导览含在船票里！越狱故事极精彩，女儿全程入迷。成人$41.45，5-11岁$27。<br><a class="link" href="https://www.alcatrazcruises.com" target="_blank">alcatrazcruises.com ⚠️ 立即预订！</a></div></li>
-      <li class="tl-item"><span class="tl-time">晚餐</span><div class="tl-content"><strong>旧金山唐人街</strong><span class="food-tag">R&amp;G Lounge 盐焗螃蟹 需提前订位</span><span class="food-tag">Sam Wo百年老店</span></div></li>
-    </ul>
-    <div class="tip">💡 7月早晨多雾，建议10点后去金门大桥拍照更清晰。</div>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header sf">
-    <div class="day-num">Day 8</div>
-    <div>
-      <div class="day-title">硅谷：斯坦福 · Google · Apple · 科学院</div>
-      <div class="day-date">7月8日（周二）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>斯坦福大学 Stanford University</strong>Hoover Tower登顶$5，Main Quad，Memorial Church，龙形喷泉广场。<br><a class="link" href="https://visit.stanford.edu/tours" target="_blank">visit.stanford.edu/tours — 免费导览预约</a></div></li>
-      <li class="tl-item"><span class="tl-time">11:30</span><div class="tl-content"><strong>Google园区（Mountain View）</strong>彩色自行车+恐龙雕塑，户外免费参观，科技感十足！</div></li>
-      <li class="tl-item"><span class="tl-time">13:00</span><div class="tl-content"><strong>Apple Park游客中心（Cupertino）</strong>最新苹果展览，免费进入，女儿爱不释手。</div></li>
-      <li class="tl-item"><span class="tl-time">14:30</span><div class="tl-content"><strong>计算机历史博物馆</strong>从算盘到ChatGPT！女儿会爱上互动编程展区。成人$19.99，6-17岁$14.99。<br><a class="link" href="https://computerhistory.org/visit" target="_blank">computerhistory.org/visit</a></div></li>
-      <li class="tl-item"><span class="tl-time">16:30</span><div class="tl-content"><strong>加州科学院（需提前预约）</strong>热带雨林穹顶+水族馆+自然历史博物馆三合一！成人$40，4-17岁$32。<br><a class="link" href="https://calacademy.org/visit" target="_blank">calacademy.org/visit</a></div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header sf">
-    <div class="day-num">Day 9</div>
-    <div>
-      <div class="day-title">旧金山市区精华 · 缆车 · 拜访二姐</div>
-      <div class="day-date">7月9日（周三）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>Golden Gate Park 金门公园</strong>日式茶园$13，玫瑰园（免费），野餐。</div></li>
-      <li class="tl-item"><span class="tl-time">11:00</span><div class="tl-content"><strong>九曲花街 Lombard Street + 百年缆车</strong>开车上九曲花街拍照，坐Powell-Hyde缆车$8下坡到Union Square，体验SF最独特城市交通！</div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>拜访二姐（旧金山郊区）</strong>与二姐团聚！在她家吃晚饭休整，为明日出发红杉做准备。</div></li>
-    </ul>
-    <div class="tip">💡 可请二姐带你们去当地Farmer's Market或推荐地道餐馆，提前为红杉国家公园采购露营食材！</div>
-  </div>
-</div>
-
-<!-- ===================== 国家公园 ===================== -->
-<div class="section-title" id="parks">
-  <div class="section-dot dot-parks"></div>
-  <h2>红杉 + 优胜美地 · Day 10–13 · 7月10–13日</h2>
-</div>
-
-<div class="tip tip-warn" style="margin-bottom:12px">
-  ⚠️ <strong>国家公园必备：</strong>America the Beautiful年票$80/辆（红杉+优胜美地均适用）。两公园均有 Junior Ranger 项目，完成任务免费领护林员徽章，女儿超爱！
-</div>
-
-<div class="day-card">
-  <div class="day-header parks">
-    <div class="day-num">Day 10</div>
-    <div>
-      <div class="day-title">🌲 二姐同行 → 出发红杉国家公园</div>
-      <div class="day-date">7月10日（周四）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">08:00</span><div class="tl-content"><strong>二姐同行出发（SF→红杉约4小时）</strong>沿途买America the Beautiful年票$80。</div></li>
-      <li class="tl-item"><span class="tl-time">12:30</span><div class="tl-content"><strong>⭐ General Sherman Tree — 世界最大生物！</strong>树高84m，周长31m，Congress Trail徒步约2小时，极为震撼！在巨树前拍照，申请Junior Ranger！</div></li>
-      <li class="tl-item"><span class="tl-time">晚上</span><div class="tl-content"><strong>Lodgepole Campground 露营</strong><a class="link" href="https://www.recreation.gov/camping/gateways/2679" target="_blank">recreation.gov ⚠️ 需提前6个月预订</a></div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header parks">
-    <div class="day-num">Day 11</div>
-    <div>
-      <div class="day-title">红杉精华：Moro Rock · Tunnel Log · Kings Canyon</div>
-      <div class="day-date">7月11日（周五）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">06:30</span><div class="tl-content"><strong>⭐ Moro Rock 登顶（清晨最美！）</strong>350级石阶，360度山脉全景无遮挡，清晨人少光线绝佳，约1.5小时。</div></li>
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>Tunnel Log + Crescent Meadow</strong>开车穿越倒下的千年古木！女儿超兴奋必打卡。清晨草甸有鹿出没。</div></li>
-      <li class="tl-item"><span class="tl-time">下午</span><div class="tl-content"><strong>Kings Canyon National Park（含年票免费）</strong>壮观大峡谷，与二姐最后同行。</div></li>
-      <li class="tl-item"><span class="tl-time">晚上</span><div class="tl-content"><strong>营地篝火晚餐 + 仰望银河</strong>零光污染，孩子一生难忘的记忆！</div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header parks">
-    <div class="day-num">Day 12</div>
-    <div>
-      <div class="day-title">⛺ 红杉→优胜美地 · 入园 · 露营第1晚</div>
-      <div class="day-date">7月12日（周六）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">08:00</span><div class="tl-content"><strong>驱车红杉→优胜美地（约2.5小时）</strong>Day-Use Reservation入园（提前网上预订$2/辆）。</div></li>
-      <li class="tl-item"><span class="tl-time">10:30</span><div class="tl-content"><strong>Tunnel View 全景 + El Capitan 草坪</strong>优胜美地最经典照片取景点！El Capitan+Half Dome+瀑布，仰望攀岩者。</div></li>
-      <li class="tl-item"><span class="tl-time">下午</span><div class="tl-content"><strong>Lower Yosemite Falls 瀑布徒步</strong>20分钟轻松步道，近距离感受瀑布水雾，女儿会欢呼！</div></li>
-      <li class="tl-item"><span class="tl-time">晚上</span><div class="tl-content"><strong>Housekeeping Camp 营地（露营第1晚）</strong>高海拔夜间5-10°C，带薄羽绒！<br><a class="link" href="https://www.recreation.gov/camping/gateways/2671" target="_blank">recreation.gov ⚠️ 需提前5个月预订</a></div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header parks">
-    <div class="day-num">Day 13</div>
-    <div>
-      <div class="day-title">⭐ Mist Trail雾道溯溪 · Junior Ranger · 露营第2晚</div>
-      <div class="day-date">7月13日（周日）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">07:00</span><div class="tl-content"><strong>⭐ Mist Trail 雾道溯溪（家庭首选！）</strong>沿Vernal Fall溯溪，穿雨衣感受瀑布水雾，全园最受家庭欢迎步道！往返约3-4小时。</div></li>
-      <li class="tl-item"><span class="tl-time">下午</span><div class="tl-content"><strong>Happy Isles自然中心 — 申请Junior Ranger！</strong>完成任务领取官方护林员徽章。Mirror Lake散步（往返4.8km，平坦适合孩子）。</div></li>
-      <li class="tl-item"><span class="tl-time">晚上</span><div class="tl-content"><strong>露营第2晚 + 星空下篝火烧烤</strong>女儿在旅行日记本写下今天的感受。</div></li>
-    </ul>
-    <div class="tip">💡 优胜美地有熊出没！食物必须存放在营地提供的Bear Box（熊柜），绝对不能放在车内！</div>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header parks">
-    <div class="day-num">Day 14</div>
-    <div>
-      <div class="day-title">Glacier Point日出 → 驾车SFO → 还车 → 飞华盛顿DC</div>
-      <div class="day-date">7月14日（周一）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">05:30</span><div class="tl-content"><strong>⭐ Glacier Point 日出（人生最美时刻之一！）</strong>清晨开车上去，日出照在Half Dome如梦似幻。需提前1小时车程，值得！</div></li>
-      <li class="tl-item"><span class="tl-time">08:00</span><div class="tl-content"><strong>收营出发 → 驾车SFO机场（约4小时）</strong>中午前出公园，约12:30抵达SFO。</div></li>
-      <li class="tl-item"><span class="tl-time">12:30</span><div class="tl-content"><strong>🚗 SFO机场还车（西岸自驾段圆满结束！）</strong>Enterprise/Hertz/Avis均在SFO机场有还车点，手续约20分钟。</div></li>
-      <li class="tl-item"><span class="tl-time">17:00</span><div class="tl-content"><strong>✈️ SFO → DCA 华盛顿里根国家机场（约5.5小时）</strong>推荐飞DCA，下飞机直接坐Metro地铁Blue/Silver线进DC市区，最便捷！<br><a class="link" href="https://www.google.com/flights" target="_blank">Google Flights 搜最优价格</a></div></li>
-      <li class="tl-item"><span class="tl-time">晚间</span><div class="tl-content"><strong>抵达华盛顿DC，入住酒店</strong>建议Penn Quarter或Capitol Hill区，地铁四通八达。</div></li>
-    </ul>
-    <div class="tip tip-warn">⚠️ 西岸自驾已在SFO完整还车！DC全程无需开车，Metro地铁SmarTrip卡出行即可。</div>
-  </div>
-</div>
-
-<!-- ===================== 华盛顿DC ===================== -->
-<div class="section-title" id="dc">
-  <div class="section-dot dot-dc"></div>
-  <h2>华盛顿DC · Day 15–18 · 7月15–18日</h2>
-</div>
-
-<div class="tip tip-book" style="margin-bottom:12px">
-  🏛️ <strong>DC核心优势：史密森尼学会全系博物馆+国家动物园完全免费！</strong>7月旺季需提前预约时间票 → <a class="link" href="https://si.edu/visit" target="_blank">si.edu/visit</a>
-</div>
-
-<div class="day-card">
-  <div class="day-header dc">
-    <div class="day-num">Day 15</div>
-    <div>
-      <div class="day-title">航空航天博物馆 · National Mall 漫步 · 历史博物馆</div>
-      <div class="day-date">7月15日（周二）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>国家航空航天博物馆（免费！）</strong>真实登月飞船、宇航服、月球岩石，IMAX太空电影$12。全球参观人数最多的博物馆之一！<br><a class="link" href="https://airandspace.si.edu/visit/mall" target="_blank">airandspace.si.edu — 免费预约入场</a></div></li>
-      <li class="tl-item"><span class="tl-time">12:30</span><div class="tl-content"><strong>National Mall 漫步（全免费）</strong>林肯纪念堂→倒影池（《阿甘正传》取景地！）→越战纪念碑→二战纪念碑→华盛顿纪念碑。步行约2小时。</div></li>
-      <li class="tl-item"><span class="tl-time">15:00</span><div class="tl-content"><strong>美国历史博物馆（免费）</strong>美国国旗原件、星球大战道具、总统礼服！<br><a class="link" href="https://americanhistory.si.edu" target="_blank">americanhistory.si.edu</a></div></li>
-      <li class="tl-item"><span class="tl-time">晚餐</span><div class="tl-content"><span class="food-tag">Jaleo 西班牙tapas名厨 $40/人</span><span class="food-tag">Old Ebbitt Grill 1856年 生蚝 $50+</span></div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header dc">
-    <div class="day-num">Day 16</div>
-    <div>
-      <div class="day-title">白宫 · 自然历史博物馆 · 国会大厦 · 国会图书馆</div>
-      <div class="day-date">7月16日（周三）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>白宫外观 + Lafayette Square</strong>Pennsylvania Avenue侧面可更近拍照。</div></li>
-      <li class="tl-item"><span class="tl-time">10:00</span><div class="tl-content"><strong>自然历史博物馆（免费！）</strong>霍普之钻45.52克拉、全身T-Rex恐龙化石、非洲象标本！<br><a class="link" href="https://naturalhistory.si.edu/visit/passes" target="_blank">naturalhistory.si.edu — 免费预约</a></div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>国会大厦导览（免费，需预约）</strong>圆形大厅壁画+美国立法历史，约1小时。<br><a class="link" href="https://visitthecapitol.gov/visit/book-a-tour" target="_blank">visitthecapitol.gov — 免费预约</a></div></li>
-      <li class="tl-item"><span class="tl-time">16:00</span><div class="tl-content"><strong>国会图书馆（免费）</strong>美国最大图书馆，穹顶壁画极美，展有古腾堡圣经等珍藏。</div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header dc">
-    <div class="day-num">Day 17</div>
-    <div>
-      <div class="day-title">国家动物园 · Georgetown · 非裔博物馆</div>
-      <div class="day-date">7月17日（周四）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>Smithsonian国家动物园（完全免费！）</strong>大熊猫！（全园最人气，早到早排）、猩猩天桥、大象馆。<br><a class="link" href="https://nationalzoo.si.edu/visit/passes" target="_blank">nationalzoo.si.edu — 免费预约</a></div></li>
-      <li class="tl-item"><span class="tl-time">12:00</span><div class="tl-content"><strong>Georgetown大学 + Georgetown小镇</strong>1789年建校，哥特式古典校园，免费参观。M Street购物美食街。<span class="food-tag">Georgetown Cupcake 网红杯子蛋糕（排队值得）</span></div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>⭐ 非裔美国人国家博物馆 NMAAHC（全美最难抢免费票！）</strong>历史展从奴隶贸易到奥巴马，极震撼。文化馆有中国功夫展区！<br><a class="link" href="https://nmaahc.si.edu/visit/passes" target="_blank">nmaahc.si.edu — 每月15日00:01整点抢！</a></div></li>
-      <li class="tl-item"><span class="tl-time">晚餐</span><div class="tl-content"><span class="food-tag">Ben's Chili Bowl U Street $10 DC文化地标1958年开业奥巴马最爱</span></div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header dc">
-    <div class="day-num">Day 18</div>
-    <div>
-      <div class="day-title">肯尼迪中心 · 间谍博物馆 · 肖像馆</div>
-      <div class="day-date">7月18日（周五）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>肯尼迪表演艺术中心 Kennedy Center</strong>户外平台俯瞰波托马克河极美！夏季有免费表演场次，女儿可能听到现场乐团排练！<br><a class="link" href="https://kennedy-center.org" target="_blank">kennedy-center.org — 查当天免费演出</a></div></li>
-      <li class="tl-item"><span class="tl-time">11:00</span><div class="tl-content"><strong>⭐ 国际间谍博物馆</strong>破解密码、化妆变装、间谍技术互动体验，10岁孩子超爱！成人$25，7-11岁$15。<br><a class="link" href="https://spymuseum.org" target="_blank">spymuseum.org — 提前网购更便宜</a></div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>国家肖像馆 + 美国艺术博物馆（同栋建筑，免费）</strong>总统肖像+美国当代艺术，约1.5小时。</div></li>
-    </ul>
-  </div>
-</div>
-
-<!-- ===================== DC→NJ公路段 ===================== -->
-<div class="section-title" id="road">
-  <div class="section-dot dot-road"></div>
-  <h2>公路段：DC→马里兰→费城→普林斯顿→纽约 · Day 19–20 · 7月19–20日</h2>
-</div>
-
-<div class="day-card">
-  <div class="day-header road">
-    <div class="day-num">Day 19</div>
-    <div>
-      <div class="day-title">🚗 DC取车 · 马里兰大学 · 费城Premium Outlets购物</div>
-      <div class="day-date">7月19日（周六）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">上午</span><div class="tl-content"><strong>🚗 DC/College Park附近取租车（第二辆）</strong>此车用2天，在新泽西还。Enterprise/Hertz在Metro站旁均有门店。</div></li>
-      <li class="tl-item"><span class="tl-time">10:00</span><div class="tl-content"><strong>马里兰大学 University of Maryland（College Park）</strong>拜访老同学！McKeldin图书馆、Testudo铜龟像（摸鼻子带来好运！），免费参观。</div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>⭐ Philadelphia Premium Outlets（宾州，服装鞋子完全0%免税！）</strong>Route 422 West，约1小时车程。Coach/Polo/North Face/UGG/Kate Spade等140+品牌。建议停留2-3小时。<br><a class="link" href="https://www.premiumoutlets.com/outlet/philadelphia" target="_blank">premiumoutlets.com/outlet/philadelphia</a></div></li>
-      <li class="tl-item"><span class="tl-time">晚间</span><div class="tl-content"><strong>前往费城或普林斯顿方向入住</strong></div></li>
-    </ul>
-    <div class="tip">💡 <strong>宾州购物法则：服装+鞋子0%完全免税！</strong>手袋/配饰征6%税，包包留到纽约Woodbury买。</div>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header road">
-    <div class="day-num">Day 20</div>
-    <div>
-      <div class="day-title">费城独立大厅 · Cheesesteak · 普林斯顿 · NJ还车→纽约</div>
-      <div class="day-date">7月20日（周日）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>费城：独立大厅 + 自由钟（免费）</strong>《独立宣言》签署地！Independence Hall免费导览需提前预约。<br><a class="link" href="https://www.recreation.gov/ticket/facility/253731" target="_blank">recreation.gov — 免费预约</a></div></li>
-      <li class="tl-item"><span class="tl-time">11:30</span><div class="tl-content"><strong>午餐：费城 Philly Cheesesteak！</strong><span class="food-tag">Pat's King of Steaks vs Geno's PK 传奇芝士牛肉三明治$12 两家斜对面</span></div></li>
-      <li class="tl-item"><span class="tl-time">13:30</span><div class="tl-content"><strong>普林斯顿大学 Princeton University</strong>美国最美校园之一，爱因斯坦曾在此工作！Nassau Hall（1756年最古老建筑），免费导览1.5小时。<br><a class="link" href="https://admission.princeton.edu/campus-visit" target="_blank">admission.princeton.edu/campus-visit</a></div></li>
-      <li class="tl-item"><span class="tl-time">16:00</span><div class="tl-content"><strong>🚗 就近新泽西还车</strong>普林斯顿/新泽西多处Enterprise/Hertz门店，20分钟手续。</div></li>
-      <li class="tl-item"><span class="tl-time">17:00</span><div class="tl-content"><strong>NJ Transit → 纽约 Penn Station（约1小时，$13/人）</strong>此后纽约全程地铁，省停车费$50/天！</div></li>
-    </ul>
-  </div>
-</div>
-
-<!-- ===================== 纽约 ===================== -->
-<div class="section-title" id="nyc">
-  <div class="section-dot dot-nyc"></div>
-  <h2>纽约 · Day 21–23 · 7月21–23日</h2>
-</div>
-
-<div class="tip" style="margin-bottom:12px">🚇 纽约交通：MetroCard无限次日票$34，或OMNY直接刷信用卡$2.90/次。建议买日票更划算。</div>
-
-<div class="day-card">
-  <div class="day-header nyc">
-    <div class="day-num">Day 21</div>
-    <div>
-      <div class="day-title">🗽 自由女神 · 自然历史博物馆 · 中央公园</div>
-      <div class="day-date">7月21日（周一）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">08:30</span><div class="tl-content"><strong>⭐ 自由女神像 + Ellis Island（提前1个月买票！）</strong>渡轮$24/成人，$14/儿童，含Ellis Island移民博物馆（极感人）。女儿可申请Junior Ranger！<br><a class="link" href="https://www.statuecruises.com" target="_blank">statuecruises.com ⚠️ 提前预订</a></div></li>
-      <li class="tl-item"><span class="tl-time">13:00</span><div class="tl-content"><strong>美国自然历史博物馆（《博物馆奇妙夜》真实取景地！）</strong>恐龙大厅、古埃及、宇宙大厅……建议捐款入场成人$28，儿童$16。至少3小时！<br><a class="link" href="https://amnh.org" target="_blank">amnh.org</a></div></li>
-      <li class="tl-item"><span class="tl-time">16:30</span><div class="tl-content"><strong>中央公园 Citi Bike骑行</strong>Bethesda Fountain、Strawberry Fields（约翰列侬纪念地）、Bow Bridge拍照。</div></li>
-      <li class="tl-item"><span class="tl-time">晚餐</span><div class="tl-content"><span class="food-tag">Shake Shack Upper West Side $15 最好吃汉堡</span><span class="food-tag">Zabar's熟食买食材公园野餐</span></div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header nyc">
-    <div class="day-num">Day 22</div>
-    <div>
-      <div class="day-title">哥大 · 9/11纪念馆 · High Line · 🥁 打击乐秀</div>
-      <div class="day-date">7月22日（周二）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">09:00</span><div class="tl-content"><strong>哥伦比亚大学 Columbia University</strong>Low Memorial Library台阶最上镜，壮观校园，免费参观。</div></li>
-      <li class="tl-item"><span class="tl-time">11:00</span><div class="tl-content"><strong>9/11纪念馆（极震撼的历史教育）</strong>双子塔遗址水池（纪念广场免费），博物馆$33/成人。参观前给孩子讲解历史背景。<br><a class="link" href="https://911memorial.org/visit/plan-your-visit" target="_blank">911memorial.org</a></div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>时代广场 + High Line高线公园</strong>M&amp;M's巨店逛逛。High Line废弃铁路改造空中公园（34街到14街），免费，俯瞰Hudson River。</div></li>
-      <li class="tl-item"><span class="tl-time">19:00</span><div class="tl-content"><strong>⭐ 🥁 打击乐演出（三选一）</strong>① Blue Man Group 巡演：<a class="link" href="https://www.blueman.com/tour" target="_blank">blueman.com/tour</a><br>② STOMP 巡演：<a class="link" href="https://stomponline.com" target="_blank">stomponline.com</a><br>③ 百老汇《狮子王》现场乐队震撼版<br><a class="link" href="https://broadway.com" target="_blank">broadway.com</a></div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header nyc">
-    <div class="day-num">Day 23</div>
-    <div>
-      <div class="day-title">🛍️ Woodbury奥莱（上午）· 大都会博物馆 · 布鲁克林 · 百老汇</div>
-      <div class="day-date">7月23日（周三）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">07:30</span><div class="tl-content"><strong>⭐ Woodbury Common Premium Outlets（上午早去人少！）</strong>Short Line巴士从Port Authority出发，往返$35/人约1小时。240+品牌！Coach/MK/Burberry大折扣。NY州$110以下服装免税。<br><a class="link" href="https://www.premiumoutlets.com/outlet/woodbury-common" target="_blank">premiumoutlets.com/outlet/woodbury-common</a><br><a class="link" href="https://www.coachusa.com" target="_blank">Short Line巴士 coachusa.com</a></div></li>
-      <li class="tl-item"><span class="tl-time">13:30</span><div class="tl-content"><strong>返回纽约 → 大都会艺术博物馆 The Met</strong>古埃及真实神庙、铠甲大厅、印象派！12岁以下免费，成人$30。至少3小时。<br><a class="link" href="https://metmuseum.org/visit" target="_blank">metmuseum.org/visit</a></div></li>
-      <li class="tl-item"><span class="tl-time">17:00</span><div class="tl-content"><strong>布鲁克林大桥步行 + DUMBO区</strong>步行过桥30分钟，DUMBO拍曼哈顿最经典全景！Jane's Carousel旋转木马$3。</div></li>
-      <li class="tl-item"><span class="tl-time">19:30</span><div class="tl-content"><strong>⭐ 百老汇音乐剧（亲子首选：《狮子王》《阿拉丁》）</strong>TKTS亭当日折扣票最高50%（时代广场，下午3点排队）。带女儿看百老汇是整个旅程最难忘的体验！<br><a class="link" href="https://tkts.com" target="_blank">tkts.com — 当日折扣票</a></div></li>
-    </ul>
-    <div class="tip">💡 <strong>购物分工</strong>：费城奥莱（Day19）买服装鞋子0%免税；Woodbury（Day23上午）买包包奢侈品。完美分工不浪费税！</div>
-  </div>
-</div>
-
-<!-- ===================== 波士顿 ===================== -->
-<div class="section-title" id="boston">
-  <div class="section-dot dot-bos"></div>
-  <h2>波士顿 · Day 24–25 · 7月24–25日（过夜行程，已优化）</h2>
-</div>
-
-<div class="tip tip-warn" style="margin-bottom:12px">
-  ✅ <strong>已优化：波士顿改为过夜行程（而非原来的单日往返）。</strong><br>
-  Day24上午从纽约出发→下午抵达波士顿游览→晚上住波士顿。<br>
-  Day25上午继续游览→中午Amtrak从<strong>波士顿South Station直接开往Newark Penn Station（含EWR机场站）</strong>，无需返回纽约！
-</div>
-
-<div class="day-card">
-  <div class="day-header bos">
-    <div class="day-num">Day 24</div>
-    <div>
-      <div class="day-title">🚂 Amtrak→波士顿 · 哈佛 · Berklee音乐学院 · MIT · 过夜</div>
-      <div class="day-date">7月24日（周四）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">08:30</span><div class="tl-content"><strong>🚂 Penn Station → Boston South Station（Amtrak Northeast Regional约4小时）</strong>提前购票$50-80/人，到波士顿约12:30。<br><a class="link" href="https://www.amtrak.com" target="_blank">amtrak.com — 提前购票更便宜</a></div></li>
-      <li class="tl-item"><span class="tl-time">12:30</span><div class="tl-content"><strong>抵达波士顿 · 午餐：Quincy Market龙虾卷</strong><span class="food-tag">现剥龙虾卷 $20-30 法尼尔厅旁</span>全美最鲜！</div></li>
-      <li class="tl-item"><span class="tl-time">14:00</span><div class="tl-content"><strong>哈佛大学 Harvard University</strong>约翰·哈佛铜像脚趾祈愿（据说能考上哈佛，女儿必摸！），Harvard Yard，Widener图书馆外观。参加免费学生导览。<br><a class="link" href="https://college.harvard.edu/admissions/visit" target="_blank">college.harvard.edu/admissions/visit</a></div></li>
-      <li class="tl-item"><span class="tl-time">15:30</span><div class="tl-content"><strong>⭐ 🎵 Berklee College of Music 伯克利音乐学院</strong>地址：1140 Boylston Street, Boston（地铁Hynes站步行5分钟）<br>· 校园外自由参观，工作日常能听到学生练琴声从窗户飘出<br>· Red Room at Cafe 939（939 Boylston St）对外开放演出<br>· 查当天Summer in City免费户外演出！<br><a class="link" href="https://berklee.edu/events/summer" target="_blank">berklee.edu/events/summer — 7月200+场免费演出</a></div></li>
-      <li class="tl-item"><span class="tl-time">17:00</span><div class="tl-content"><strong>MIT 麻省理工学院</strong>Frank Gehry设计的Stata Center奇特建筑，完全免费，科技与艺术完美融合。</div></li>
-      <li class="tl-item"><span class="tl-time">晚上</span><div class="tl-content"><strong>🌙 波士顿过夜（Back Bay或South End区酒店）</strong>从容享受波士顿夜晚！晚餐推荐：<span class="food-tag">Legal Sea Foods 新英格兰海鲜 $40</span></div></li>
-    </ul>
-  </div>
-</div>
-
-<div class="day-card">
-  <div class="day-header bos">
-    <div class="day-num">Day 25</div>
-    <div>
-      <div class="day-title">波士顿早晨 → 🚂 Amtrak直达Newark机场 → ✈️ 回国</div>
-      <div class="day-date">7月25日（周五）</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <ul class="timeline">
-      <li class="tl-item"><span class="tl-time">08:30</span><div class="tl-content"><strong>波士顿早晨：自由之路 Freedom Trail（部分）</strong>跟红线步道游法尼尔厅、保罗·瑞维尔故居。约1.5小时，免费。</div></li>
-      <li class="tl-item"><span class="tl-time">10:00</span><div class="tl-content"><strong>早午餐 + 从容整理行李</strong><span class="food-tag">Flour Bakery早午餐 $15</span>或<span class="food-tag">法尼尔厅附近龙虾卷最后一餐</span></div></li>
-      <li class="tl-item"><span class="tl-time">11:30</span><div class="tl-content">
-        <strong>⭐ 🚂 Amtrak：Boston South Station → Newark Airport Station（EWR直达！）</strong>
-        全程约4.5小时，途经Providence→New Haven→New York Penn→<strong>Newark Airport Station</strong><br>
-        到达Newark后，直接乘AirTrain（已含在Amtrak票价内）到EWR航站楼！<br>
-        约下午4:00抵达EWR，完全无需回纽约，无需打车！<br>
-        <a class="link" href="https://www.amtrak.com" target="_blank">amtrak.com — 购票时选"Newark Airport NJA"站</a>
-      </div></li>
-      <li class="tl-item"><span class="tl-time">16:00</span><div class="tl-content"><strong>Newark EWR国际候机楼 — 办理值机</strong>国际航班建议提前3小时到，从容办行李托运。<br>行李超重：USPS Priority Mail可提前寄回，约$80-150/箱。</div></li>
-      <li class="tl-item"><span class="tl-time">晚间</span><div class="tl-content"><strong>✈️ 飞回国！</strong></div></li>
-    </ul>
-    <div class="tip tip-book">
-      🚂 <strong>Amtrak Boston→Newark直达优势：</strong>无需重返纽约→无需打车→无需在纽约转车→下车步行即到EWR机场！省时省力，旅程最后一段最优解。
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 18</span><span class="day-title">美国历史博物馆 · 肯尼迪中心 · 肖像馆 · 🚗 取第二辆车</span><span class="day-date">7月18日 周六</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>美国历史博物馆（免费）</strong>
+          <p>美国国旗原件、星球大战道具、总统礼服！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">11:30</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>肯尼迪表演艺术中心</strong>
+          <p>夏季免费演出，户外平台俯瞰波托马克河极美！</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">14:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>国家肖像馆 + 美国艺术博物馆（同栋，免费）+ 取第二辆租车</strong>
+        </div></li>
+      </ul>
     </div>
   </div>
 </div>
 
-<!-- ===================== 音乐专区 ===================== -->
-<div class="section-title" id="music">
-  <div class="section-dot" style="background:#7b1fa2"></div>
-  <h2>🥁 音乐 &amp; 打击乐专项行程</h2>
+<hr class="div">
+
+<!-- DC → NYC -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">🚗</div>
+    <div class="section-title"><h2>马大 · 费城 · 普林斯顿 → 纽约 · Day 19–20</h2></div>
+  </div>
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 19</span><span class="day-title">🚗 DC取车 · 马里兰大学 · 费城Premium Outlets</span><span class="day-date">7月19日 周日</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot"></div><div class="tl-content"><strong>马里兰大学 University of Maryland</strong><p>拜访老同学！Testudo铜龟像摸鼻子带来好运。</p></div></li>
+        <li class="tl-item"><div class="tl-time">14:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ Philadelphia Premium Outlets（宾州服装+鞋子0%免税！）</strong>
+          <p>Coach/Polo/North Face/UGG等140+品牌。</p>
+          <a href="https://www.premiumoutlets.com/outlet/philadelphia" target="_blank">premiumoutlets.com</a>
+        </div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 20</span><span class="day-title">费城独立大厅 · ⭐ Cheesesteak · 普林斯顿 · NJ还车→纽约</span><span class="day-date">7月20日 周一</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot"></div><div class="tl-content"><strong>费城：独立大厅 + 自由钟（免费）</strong><p>《独立宣言》签署地！</p></div></li>
+        <li class="tl-item"><div class="tl-time">11:30</div><div class="tl-dot star"></div><div class="tl-content"><strong>⭐ Philly Cheesesteak！Pat's vs Geno's PK</strong><p>$12/个，两家斜对面，一人一个！</p></div></li>
+        <li class="tl-item"><div class="tl-time">13:30</div><div class="tl-dot"></div><div class="tl-content"><strong>普林斯顿大学 Princeton University</strong><p>爱因斯坦曾在此工作，最美校园，Nassau Hall(1756年)。</p></div></li>
+        <li class="tl-item"><div class="tl-time">16:00</div><div class="tl-dot go"></div><div class="tl-content"><strong>🚗 NJ还车 → NJ Transit进纽约Penn Station（约1小时，$13/人）</strong><p>此后纽约全程地铁！</p></div></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<div class="music-card">
-  <h3>🥁 Blue Man Group — 全球最知名打击乐+视觉艺术秀</h3>
-  <p>三个蓝色秃头男用PVC管道、垃圾桶、特制乐器演奏，结合科技视觉，无语言完全靠节奏！全程约90分钟。10岁完全适合⭐⭐⭐⭐⭐，全场观众互动，坐前排可能被颜料溅到（有防水围裙，很好玩！）<br>⚠️ 纽约Astor Place剧场2025年2月已永久关闭，全国巡演仍在继续。<br>票价：$49-89/人，前排有围裙。<br><a href="https://www.blueman.com/tour" target="_blank">blueman.com/tour — 查2026年7月东岸场次</a></p>
-</div>
-<div class="music-card">
-  <h3>🥁 STOMP — 日常物品打击乐，极具感染力</h3>
-  <p>8人用扫帚、垃圾桶盖、火柴盒等日常物品打出神奇节奏+舞蹈，无语言，全场参与感极强！约1小时45分钟，无中场休息。10岁孩子会全程兴奋，直接激发音乐兴趣⭐⭐⭐⭐⭐<br>⚠️ 纽约原版2023年1月已关闭，全美巡演2025-26仍在继续。<br><a href="https://stomponline.com" target="_blank">stomponline.com — 查2026年7月东岸场次</a></p>
-</div>
-<div class="music-card">
-  <h3>🎓 Berklee College of Music — 伯克利音乐学院参观</h3>
-  <p>地址：1140 Boylston Street, Boston（地铁Hynes站步行5分钟）<br>① 校园外自由参观建筑，工作日可听到学生练琴声穿窗而出<br>② Red Room at Cafe 939（939 Boylston St）：对外公众演出，免费或低价<br>③ ⭐ Summer in City：6-9月波士顿各地200+场免费户外演出！Jazz/Latin/R&amp;B/Folk/流行，Prudential/Boston Common等地每周举行<br><a href="https://berklee.edu/events/summer" target="_blank">berklee.edu/events/summer — 查免费演出日历</a></p>
-</div>
-<div class="music-card" style="background:linear-gradient(135deg,#880e4f,#ad1457)">
-  <h3>🎭 百老汇《狮子王》— 现场乐队，震撼心灵</h3>
-  <p>现场弦乐鼓点是震撼体验，非录音！带女儿看百老汇是整个美国之旅最难忘的体验。<br>TKTS亭当日折扣票最高50%，下午3点时代广场排队。<br><a href="https://broadway.com" target="_blank">broadway.com</a> · <a href="https://tkts.com" target="_blank">tkts.com 当日折扣票</a></p>
+<hr class="div">
+
+<!-- NYC -->
+<div class="section" id="nyc">
+  <div class="section-header">
+    <div class="section-icon">🗽</div>
+    <div class="section-title"><h2>纽约 · Day 21–23 · 7月21–23日</h2></div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 21</span><span class="day-title">🗽 自由女神 · 自然历史博物馆 · 中央公园</span><span class="day-date">7月21日 周二</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">08:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 自由女神像 + Ellis Island</strong>
+          <p>渡轮$24/成人，$14/儿童，含移民博物馆。女儿申请Junior Ranger第2枚！</p>
+          <a href="https://www.statuecruises.com" target="_blank">statuecruises.com ⚠️ 提前1月预订</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 自然历史博物馆（《博物馆奇妙夜》取景地！）</strong>
+          <p>恐龙大厅、古埃及、宇宙大厅，捐款入场$28/$16，至少3小时。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">17:00</div><div class="tl-dot"></div><div class="tl-content"><strong>中央公园 Citi Bike骑行</strong><p>Bethesda Fountain、Strawberry Fields、Bow Bridge。</p></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 22</span><span class="day-title">哥大 · 9/11纪念馆 · High Line · 🥁 打击乐秀</span><span class="day-date">7月22日 周三</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">09:00</div><div class="tl-dot"></div><div class="tl-content"><strong>哥伦比亚大学 + 9/11纪念馆</strong><p>双子塔遗址水池广场免费，博物馆$33。</p></div></li>
+        <li class="tl-item"><div class="tl-time">14:00</div><div class="tl-dot"></div><div class="tl-content"><strong>时代广场 + High Line高线公园（免费）</strong></div></li>
+        <li class="tl-item"><div class="tl-time">19:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 🥁 打击乐演出（三选一）</strong>
+          <p>① Blue Man Group巡演$49-89 · ② STOMP巡演$49-99 · ③ 百老汇《狮子王》$80-200</p>
+          <a href="https://blueman.com/tour" target="_blank">blueman.com/tour</a> · <a href="https://stomponline.com" target="_blank">stomponline.com</a> · <a href="https://tkts.com" target="_blank">tkts.com折扣</a>
+        </div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 23</span><span class="day-title">🛍️ Woodbury奥莱 · 大都会博物馆 · 布鲁克林 · 百老汇</span><span class="day-date">7月23日 周四</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">07:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ Woodbury Common Premium Outlets（早去人少！）</strong>
+          <p>Short Line巴士往返$35，240+品牌，NY州$110以下服装免税，包包奢侈品大折扣。</p>
+          <a href="https://www.premiumoutlets.com/outlet/woodbury-common" target="_blank">premiumoutlets.com/woodbury-common</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 大都会艺术博物馆 The Met</strong>
+          <p>古埃及真实神庙、铠甲大厅、印象派！成人$30，12岁以下免费，至少3小时。</p>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">17:00</div><div class="tl-dot"></div><div class="tl-content"><strong>布鲁克林大桥步行 + DUMBO区全景</strong><p>Jane's Carousel旋转木马$3。</p></div></li>
+        <li class="tl-item"><div class="tl-time">19:30</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 百老汇《狮子王》（TKTS亭当日50%折）</strong>
+          <a href="https://tkts.com" target="_blank">tkts.com — 下午3点排队</a>
+        </div></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<!-- ===================== 美食 ===================== -->
-<div class="section-title" id="food">
-  <div class="section-dot" style="background:#e65100"></div>
-  <h2>🍽️ 沿途美食攻略</h2>
-</div>
-<table class="food-table">
-  <tr><th>城市</th><th>餐厅 / 食物</th><th>价格</th><th>亮点</th></tr>
-  <tr><td>洛杉矶</td><td>The Lobster（圣莫妮卡）</td><td>$60/人</td><td>海景龙虾，需提前订位</td></tr>
-  <tr><td>洛杉矶</td><td>Roscoe's Chicken &amp; Waffles</td><td>$20/人</td><td>炸鸡华夫饼，LA文化icon，奥巴马同款</td></tr>
-  <tr><td>洛杉矶</td><td>⭐ In-N-Out Burger</td><td>$8</td><td>西岸独有！东岸没有，必吃</td></tr>
-  <tr><td>圣地亚哥</td><td>Ironside Fish &amp; Oyster</td><td>$40/人</td><td>米其林推荐，生蚝龙虾汤，Little Italy</td></tr>
-  <tr><td>圣塔芭芭拉</td><td>State Street海鲜小馆</td><td>$25-35</td><td>沿途停靠，新鲜海鲜</td></tr>
-  <tr><td>旧金山</td><td>Boudin Bakery 酸面包汤碗</td><td>$12</td><td>渔人码头，SF特产必吃</td></tr>
-  <tr><td>旧金山</td><td>Ghirardelli热巧克力圣代</td><td>$13</td><td>SF发源地，女儿必吃！</td></tr>
-  <tr><td>旧金山</td><td>R&amp;G Lounge 盐焗螃蟹</td><td>$60-80</td><td>唐人街招牌，需提前订位</td></tr>
-  <tr><td>华盛顿DC</td><td>Ben's Chili Bowl</td><td>$10</td><td>DC文化地标1958年，奥巴马最爱</td></tr>
-  <tr><td>华盛顿DC</td><td>Old Ebbitt Grill</td><td>$50+</td><td>DC最老餐厅，生蚝牛排</td></tr>
-  <tr><td>费城</td><td>⭐ Philly Cheesesteak（Pat's vs Geno's）</td><td>$12/个</td><td>传奇芝士牛肉三明治，两家斜对面PK</td></tr>
-  <tr><td>纽约</td><td>Joe's Pizza</td><td>$3/片</td><td>最正宗纽约折叠派，站着吃！</td></tr>
-  <tr><td>纽约</td><td>Katz's Delicatessen</td><td>$25</td><td>1888年，巨无霸熏牛肉三明治</td></tr>
-  <tr><td>纽约</td><td>Shake Shack（Madison Square原店）</td><td>$15</td><td>最好吃美式汉堡</td></tr>
-  <tr><td>波士顿</td><td>⭐ Quincy Market龙虾卷</td><td>$20-30</td><td>现剥现做，法尼尔厅旁，波士顿必吃</td></tr>
-  <tr><td>波士顿</td><td>Legal Sea Foods</td><td>$40</td><td>新英格兰海鲜经典，蛤蜊浓汤</td></tr>
-</table>
+<hr class="div">
 
-<!-- ===================== 实用贴士 ===================== -->
-<div class="section-title" id="tips">
-  <div class="section-dot" style="background:#00695c"></div>
-  <h2>🧳 实用出行贴士</h2>
+<!-- BOSTON -->
+<div class="section" id="boston">
+  <div class="section-header">
+    <div class="section-icon">🚂</div>
+    <div class="section-title"><h2>波士顿一日游 · Day 24 · 7月24日</h2><p>当日往返，当晚仍住纽约</p></div>
+  </div>
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 24</span><span class="day-title">🚂 哈佛 · Berklee音乐学院 · MIT · 龙虾卷 → 返纽约</span><span class="day-date">7月24日 周五</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">07:00</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>🚂 Penn Station出发 → Boston South Station（Amtrak约4小时）</strong>
+          <a href="https://www.amtrak.com" target="_blank">amtrak.com — 同时购往返票省50%</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">11:00</div><div class="tl-dot"></div><div class="tl-content"><strong>Quincy Market 龙虾卷 $20-30</strong><p>现剥现做，法尼尔厅旁，全美最鲜。</p></div></li>
+        <li class="tl-item"><div class="tl-time">12:30</div><div class="tl-dot star"></div><div class="tl-content"><strong>⭐ 哈佛大学 Harvard University</strong><p>约翰·哈佛铜像脚趾祈愿（女儿必摸！），Harvard Yard，免费学生导览。</p></div></li>
+        <li class="tl-item"><div class="tl-time">14:00</div><div class="tl-dot star"></div><div class="tl-content">
+          <strong>⭐ 🎵 Berklee College of Music 伯克利音乐学院</strong>
+          <p>校园外自由参观，可听到学生练琴声。查Summer in City 7月200+场免费演出！</p>
+          <a href="https://berklee.edu/events/summer" target="_blank">berklee.edu/events/summer</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">15:30</div><div class="tl-dot"></div><div class="tl-content"><strong>MIT麻省理工 + Freedom Trail（部分）</strong><p>Stata Center奇特建筑，免费参观。</p></div></li>
+        <li class="tl-item"><div class="tl-time">19:00</div><div class="tl-dot"></div><div class="tl-content"><strong>🚂 返回纽约Penn Station（约23:00到）</strong><p>女儿在火车上睡觉，当晚仍住纽约。</p></div></li>
+      </ul>
+    </div>
+  </div>
 </div>
-<div class="tips-grid">
-  <div class="tip-card">
-    <h3>🚗 租车 &amp; 自驾</h3>
-    <ul>
-      <li>第一辆：LAX取 → SFO还（Day1-14，约2周）</li>
-      <li>第二辆：DC/马里兰取 → 新泽西还（Day19-20，2天）</li>
-      <li>选SUV含全险GPS，Enterprise/Hertz/Budget均可</li>
-      <li>加油：Shell/Chevron，选Regular 87#即可</li>
-      <li>I-95有E-ZPass，走Cash Lane无需准备</li>
-      <li>优胜美地停车含在Day-Use Reservation里</li>
-    </ul>
+
+<hr class="div">
+
+<!-- FINAL DAY -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon">😌</div>
+    <div class="section-title"><h2>纽约休闲 → Newark EWR → ✈️ 回国 · Day 25 · 7月25日</h2></div>
   </div>
-  <div class="tip-card">
-    <h3>🚂 火车段（已优化）</h3>
-    <ul>
-      <li>Day24：Penn Station 8:30am → Boston South Station（~4hrs）</li>
-      <li>Day25：Boston South Station 11:30am → Newark Airport NJA（~4.5hrs）</li>
-      <li>下车直接AirTrain到EWR，无缝衔接！</li>
-      <li>提前2个月购Amtrak可省50%，选Acela更快</li>
-      <li>纽约市内：MetroCard日票$34无限次</li>
-      <li>NJ Transit：还车后到Penn Station $13/人</li>
-    </ul>
+  <div class="day-card">
+    <div class="day-header"><span class="day-badge">Day 25</span><span class="day-title">休闲早晨 → Penn Station → EWR → ✈️ 回国！</span><span class="day-date">7月25日 周六 · 最后一天</span></div>
+    <div class="day-body">
+      <ul class="timeline">
+        <li class="tl-item"><div class="tl-time">上午</div><div class="tl-dot"></div><div class="tl-content">
+          <strong>三选一：中央公园早晨 / Jersey Gardens Outlets / Brooklyn早午餐</strong>
+          <p>Jersey Gardens最实用：PATH地铁到Journal Square换乘约40分钟，逛完步行AirTrain直进EWR！</p>
+          <a href="https://jerseygardens.com" target="_blank">jerseygardens.com</a>
+        </div></li>
+        <li class="tl-item"><div class="tl-time">13:30</div><div class="tl-dot"></div><div class="tl-content"><strong>Penn Station → Newark EWR（NJ Transit，约30分钟，$15/人）</strong></div></li>
+        <li class="tl-item"><div class="tl-time">14:30</div><div class="tl-dot"></div><div class="tl-content"><strong>EWR国际航站楼 — 提前3小时值机</strong></div></li>
+        <li class="tl-item"><div class="tl-time">晚间</div><div class="tl-dot star"></div><div class="tl-content"><strong>✈️ 飞回国！25天精彩旅程圆满结束！</strong></div></li>
+      </ul>
+    </div>
   </div>
-  <div class="tip-card">
-    <h3>💰 省钱攻略</h3>
-    <ul>
-      <li>America the Beautiful年票$80覆盖所有国家公园</li>
-      <li>DC史密森尼群博物馆+动物园全免费！</li>
-      <li>百老汇TKTS亭当日50%折，下午3点排</li>
-      <li>迪士尼带零食水进园省$40+</li>
-      <li>Amtrak越早买越便宜，2个月前最划算</li>
-      <li>Berklee Summer in City：波士顿200+场免费音乐会</li>
-      <li>超市早餐（Trader Joe's）每天省$30</li>
-    </ul>
+</div>
+
+<hr class="div">
+
+<!-- FOOD -->
+<div class="section" id="food">
+  <div class="section-header">
+    <div class="section-icon">🍽️</div>
+    <div class="section-title"><h2>沿途美食攻略</h2></div>
   </div>
-  <div class="tip-card">
-    <h3>👧 带10岁女儿贴士</h3>
-    <ul>
-      <li>Junior Ranger：红杉+优胜美地，完成任务领徽章</li>
+  <div style="overflow-x:auto;">
+    <table class="food-table">
+      <thead><tr><th>城市</th><th>食物 / 餐厅</th><th>价格</th><th>亮点</th></tr></thead>
+      <tbody>
+        <tr><td>洛杉矶</td><td>⭐ In-N-Out Burger</td><td class="price">$8</td><td>西岸独有，东岸没有，出LA前必吃！</td></tr>
+        <tr><td>洛杉矶 Day3</td><td>Roscoe's Chicken &amp; Waffles</td><td class="price">$20</td><td>Griffith后午餐，好莱坞附近LA文化icon</td></tr>
+        <tr><td>圣地亚哥 Day4</td><td>The Fish Market 现捞海鲜</td><td class="price">$35</td><td>小鹰号旁Embarcadero，海景餐厅</td></tr>
+        <tr><td>圣地亚哥 Day5</td><td>Old Town Casa Guadalajara</td><td class="price">$25</td><td>正宗墨西哥菜，La Jolla后午餐</td></tr>
+        <tr><td>1号公路 Day6</td><td>Pismo Beach 蛤蜊汤碗</td><td class="price">$14</td><td>Big Sur前中途午餐站</td></tr>
+        <tr><td>蒙特雷 Day7</td><td>Fisherman's Wharf 龙虾蛤蜊</td><td class="price">$30-40</td><td>水族馆旁，现捞现烹</td></tr>
+        <tr><td>圣塔芭芭拉</td><td>La Super-Rica Taqueria</td><td class="price">$15</td><td>Julia Child最爱，加州最正宗墨西哥</td></tr>
+        <tr><td>旧金山 Day10</td><td>Boudin Bakery 酸面包汤碗</td><td class="price">$12</td><td>渔人码头SF特产，Day14 Ferry Building也有</td></tr>
+        <tr><td>旧金山</td><td>Ghirardelli热巧克力圣代</td><td class="price">$13</td><td>SF发源地，女儿必吃！</td></tr>
+        <tr><td>旧金山</td><td>R&amp;G Lounge 盐焗螃蟹</td><td class="price">$60-80</td><td>唐人街招牌，提前订位</td></tr>
+        <tr><td>伯克利 Day12</td><td>Cheeseboard Pizza 当日口味</td><td class="price">$4/片</td><td>网球赛间隙，Telegraph Ave，必排队</td></tr>
+        <tr><td>华盛顿DC</td><td>Ben's Chili Bowl</td><td class="price">$10</td><td>DC地标1958年，奥巴马最爱</td></tr>
+        <tr><td>费城 Day20</td><td>⭐ Philly Cheesesteak（Pat's vs Geno's）</td><td class="price">$12/个</td><td>传奇芝士牛肉三明治两家PK！</td></tr>
+        <tr><td>纽约</td><td>Joe's Pizza</td><td class="price">$3/片</td><td>最正宗纽约折叠派，站着吃！</td></tr>
+        <tr><td>波士顿 Day24</td><td>⭐ Quincy Market龙虾卷</td><td class="price">$20-30</td><td>现剥现做，法尼尔厅旁，全美最鲜</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- TIPS -->
+<div class="section" id="tips">
+  <div class="section-header">
+    <div class="section-icon">🧳</div>
+    <div class="section-title"><h2>实用出行贴士</h2></div>
+  </div>
+  <div class="tips-grid">
+    <div class="tip"><h4>🚗 两段租车计划</h4><ul>
+      <li><strong>第一辆：</strong>LAX取(Day1) → SFO还(Day14下午)，14天</li>
+      <li>覆盖：LA→SD→1号公路→SF湾区→Brentwood</li>
+      <li><strong>第二辆：</strong>DC/MD取(Day18) → NJ还(Day20)，3天</li>
+      <li>Day14注意：需14:00前抵达SFO还车！</li>
+      <li>DC+纽约+波士顿：全程公共交通</li>
+    </ul></div>
+    <div class="tip"><h4>🔭 Day3节奏（关键）</h4><ul>
+      <li>Griffith: 10:00-12:00（室外免费，球幕秀$10现场买）</li>
+      <li>⚠️ 球幕秀不可预约，周五正常开放✓</li>
+      <li>午餐Roscoe's: 12:00-13:15</li>
+      <li>Getty: 13:30-15:15（停车$20须提前预约！）</li>
+      <li>出发圣地亚哥: 15:30，约2.5小时</li>
+    </ul></div>
+    <div class="tip"><h4>🐋 圣地亚哥Day4海洋攻略</h4><ul>
+      <li>小鹰号08:30开门即到，预留2.5小时</li>
+      <li>SeaWorld网购$65-85，比现场省$20+</li>
+      <li>SeaWorld必看：Orca虎鲸秀+海豚触摸+Emperor过山车</li>
+      <li>带换洗衣物（Manta过山车/海豚区可能被水淋）</li>
+      <li>国庆SeaWorld可能有专属烟火秀</li>
+      <li>晚上Big Bay Boom提前2小时占位！</li>
+    </ul></div>
+    <div class="tip"><h4>🎾 网球赛贴士（Day12-13）</h4><ul>
+      <li>Berkeley BG 18-12U Level 6 Junior Open ✓</li>
+      <li>场地：San Pablo Park, Berkeley</li>
+      <li>Brentwood出发约35分钟（I-4→I-80W）</li>
+      <li>提前确认比赛签表和开球时间</li>
+      <li>备球拍2把、护腕、帽子、SPF50+</li>
+      <li>间隙大人游UC Berkeley（步行可达）</li>
+    </ul></div>
+    <div class="tip"><h4>🏠 Brentwood住宿优势</h4><ul>
+      <li>Day8-13住此（7天西岸湾区基地）</li>
+      <li>距伯克利San Pablo Park约35分钟</li>
+      <li>距SF市区约55分钟（Bay Bridge）</li>
+      <li>距斯坦福约55分钟</li>
+      <li>7月鲜果采摘旺季（桃子/油桃）</li>
+      <li>可停车，来去自由</li>
+    </ul></div>
+    <div class="tip"><h4>🛣️ 1号公路驾驶贴士</h4><ul>
+      <li>分2天，每天约200-250英里</li>
+      <li>Big Sur段手机信号差，提前下载离线地图</li>
+      <li>必停：Bixby Bridge、McWay Falls、Pfeiffer Beach紫沙滩</li>
+      <li>蒙特雷水族馆旺季需提前预约</li>
+      <li>17英里路收$12.25入场费，值得</li>
+      <li>加油站间距远，出发前加满</li>
+    </ul></div>
+    <div class="tip"><h4>💰 省钱攻略</h4><ul>
+      <li>DC博物馆群+动物园全免费！</li>
+      <li>Palace of Fine Arts 艺术宫完全免费</li>
+      <li>Getty Center本身免费（停车$20需预约）</li>
+      <li>Griffith室外免费，球幕秀$10/$6</li>
+      <li>百老汇TKTS亭当日50%折，下午3点排队</li>
+      <li>宾州买服装鞋子0%免税！</li>
+    </ul></div>
+    <div class="tip"><h4>👧 亲子专项贴士</h4><ul>
+      <li>Junior Ranger徽章：Muir Woods+自由女神共2枚</li>
       <li>打印美国地图让女儿在经过的州画星星</li>
-      <li>鼓励写旅行日记+拍照，回国制作相册</li>
-      <li>防晒SPF50+，7月全程高温</li>
-      <li>优胜美地夜晚高海拔5-10°C，带薄羽绒</li>
-      <li>9/11博物馆参观前给孩子讲历史背景</li>
-      <li>Berklee/哈佛门口可能遇学生即兴演奏！</li>
-    </ul>
-  </div>
-  <div class="tip-card">
-    <h3>📱 必备App</h3>
-    <ul>
-      <li>Google Maps：导航，提前下载离线地图</li>
-      <li>NPS National Parks：公园地图+Junior Ranger</li>
-      <li>Disneyland App：实时排队+Genie+</li>
-      <li>Amtrak App：购票+实时到站</li>
-      <li>SpotHero：城市停车预订</li>
-      <li>TodayTix：百老汇Rush票折扣</li>
-    </ul>
-  </div>
-  <div class="tip-card">
-    <h3>⚠️ 注意事项</h3>
-    <ul>
-      <li>小费：餐厅18-20%，Uber可给$2-3</li>
-      <li>电话卡：T-Mobile/AT&T临时SIM $30-50/月</li>
-      <li>优胜美地熊出没！食物存Bear Box不能放车内</li>
-      <li>7月4日国庆节景区极拥挤，提前2小时占位</li>
-      <li>美国医疗极贵，出发前务必购旅行险含急诊</li>
-      <li>行李超重：USPS寄回$80-150/箱</li>
-    </ul>
+      <li>鼓励写旅行日记，回国制作精美相册</li>
+      <li>防晒SPF50+，7月全程烈日</li>
+      <li>在美国参加网球锦标赛是终生难忘体验！</li>
+      <li>哈佛铜像脚趾必摸！（考哈佛的秘诀😄）</li>
+    </ul></div>
   </div>
 </div>
 
-</div><!-- /container -->
-
-<div style="text-align:center;padding:32px;background:#1a237e;color:#fff;font-size:.85rem;margin-top:24px">
-  <div style="font-size:1.3rem;margin-bottom:8px">✈️ 祝旅途愉快，和女儿共创一生难忘的美好记忆！🌟</div>
-  <div style="opacity:.7">本攻略基于2025-2026年信息整理 · 价格、链接及开放时间请出发前通过各官网核实</div>
-</div>
+<!-- FOOTER -->
+<footer>
+  <span>✈️ 祝旅途愉快，和女儿共创一生难忘的美好记忆！🌟</span><br><br>
+  V4修订：Day3增加Griffith球幕秀+Getty Center→下午南下SD · 圣地亚哥2天：Day4小鹰号+SeaWorld海洋馆+国庆烟火，Day5 La Jolla→出发1号公路 · 机票14日晚飞DC，西岸精确14天 · 网球赛已确认：Berkeley BG 18-12U Level 6 Junior Open · 7/12-13 · San Pablo Park<br><br>
+  价格·链接·开放时间请出发前各官网核实 · 2026年7月
+</footer>
 
 </body>
 </html>
